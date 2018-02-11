@@ -1,0 +1,19 @@
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\bin\Release\Prueba1.exe
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\bin\Release\Prueba1.pdb
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\obj\x86\Release\Prueba1.Properties.Resources.resources
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\obj\x86\Release\Prueba1.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\obj\x86\Release\Prueba1.exe
+C:\Users\USUARIO\Dropbox\Promowork\Prueba1\obj\x86\Release\Prueba1.pdb
+C:\Users\Maite\Google Drive\Promowork\Prueba1\bin\Release\Prueba1.exe
+C:\Users\Maite\Google Drive\Promowork\Prueba1\bin\Release\Prueba1.pdb
+C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.Properties.Resources.resources
+C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.csproj.GenerateResource.Cache
+C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.exe
+C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.pdb
+C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\bin\Release\Prueba1.exe
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\bin\Release\Prueba1.pdb
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.Properties.Resources.resources
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.csproj.GenerateResource.Cache
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.exe
+C:\Users\USUARIO2\Google Drive\Promowork\Prueba1\obj\x86\Release\Prueba1.pdb
