@@ -1,5 +1,0 @@
-C:\Users\USUARIO\Google Drive\Promowork\bin\Debug\Gestion.exe.config
-C:\Users\USUARIO\Google Drive\Promowork\obj\x86\Debug\Interop.AcroPDFLib.dll
-C:\Users\USUARIO\Google Drive\Promowork\obj\x86\Debug\Interop.WIA.dll
-C:\Users\USUARIO\Google Drive\Promowork\obj\x86\Debug\AxInterop.AcroPDFLib.dll
-C:\Users\USUARIO\Google Drive\Promowork\obj\x86\Debug\Gestion.csproj.ResolveComReference.cache

@@ -1,2 +1,0 @@
-﻿PARA POENER COLORES ALTERNOS EN LOS REPORTES
-=iif(RowNumber(Nothing) Mod 2, "#edf9fe", "Transparent")

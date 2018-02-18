@@ -1,7 +1,0 @@
-C:\Users\Maite\Google Drive\Promowork\Prueba1\bin\Debug\Prueba1.exe
-C:\Users\Maite\Google Drive\Promowork\Prueba1\bin\Debug\Prueba1.pdb
-C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Debug\Prueba1.csprojResolveAssemblyReference.cache
-C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Debug\Prueba1.Properties.Resources.resources
-C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Debug\Prueba1.csproj.GenerateResource.Cache
-C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Debug\Prueba1.exe
-C:\Users\Maite\Google Drive\Promowork\Prueba1\obj\x86\Debug\Prueba1.pdb
