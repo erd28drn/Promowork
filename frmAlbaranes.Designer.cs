@@ -762,7 +762,7 @@
             this.Obra.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ObraSM", "Obra", 51, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.Obra.DataSource = this.obrasBindingSource;
-            this.Obra.DisplayMember = "ObraSM";
+            this.Obra.DisplayMember = "Obra";
             this.Obra.Name = "Obra";
             this.Obra.NullText = "";
             this.Obra.ValueMember = "IdObra";

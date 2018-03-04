@@ -562,8 +562,8 @@ namespace Promowork
 
             var resultado= Utilidades.SumarCeldas(gridView, celdasSeleccionadas);
 
-            tbCantidadSeleccion.Text = resultado.Cantidad;
-            tbImporteSeleccion.Text = resultado.Importe;
+            tbCantidadSeleccion.Text = resultado.Recuento.ToString();
+            tbImporteSeleccion.Text = resultado.Suma.ToString("C2");
 
         }
 

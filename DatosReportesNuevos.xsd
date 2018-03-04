@@ -178,12 +178,12 @@ WHERE        (Empresa = @Empresa) AND (DATEPART(YEAR, Fecha) = @Ano)</CommandTex
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vAlbaranesTableAdapter" GeneratorDataComponentClassName="vAlbaranesTableAdapter" Name="vAlbaranes" UserDataComponentName="vAlbaranesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.vAlbaranes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.vAlbaranes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        IdEmpresa, IdAlbaranCab, IdObra, IdProveedor, NumAlbaran, ConsecutivoAlbaran, FechaAlbaran, Valorado, Utilizado, FacturaRecibida, Observaciones, SinAlbaran, 
-                         NumMatriz, NumObra, SerieObra, DesObra, DesProveedor, IdProducto, Cantidad, Precio, Descuento, IdLugarUso, IdTrabajador, DesLugarUso, NumTrabajador, 
-                         NomTrabajador, ApeTrabajador, CodProductoInterno, DesProducto, IdUMedidaProv, CodUmedida, DesUmedida
+                    <CommandText>SELECT        IdEmpresa, IdAlbaranCab, IdObra, IdProveedor, NumAlbaran, ConsecutivoAlbaran, FechaAlbaran, Valorado, Utilizado, FacturaRecibida, Observaciones, SinAlbaran, NumMatriz, NumObra, SerieObra, DesObra, DesProveedor, 
+                         IdProducto, Cantidad, Precio, Descuento, IdLugarUso, IdTrabajador, DesLugarUso, NumTrabajador, NomTrabajador, ApeTrabajador, CodProductoInterno, DesProducto, IdUMedidaProv, CodUmedida, DesUmedida, 
+                         ISNULL(EmailProveedor, '') AS EmailProveedor
 FROM            vAlbaranes</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -223,18 +223,21 @@ FROM            vAlbaranes</CommandText>
               <Mapping SourceColumn="IdUMedidaProv" DataSetColumn="IdUMedidaProv" />
               <Mapping SourceColumn="CodUmedida" DataSetColumn="CodUmedida" />
               <Mapping SourceColumn="DesUmedida" DataSetColumn="DesUmedida" />
+              <Mapping SourceColumn="EmailProveedor" DataSetColumn="EmailProveedor" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.vAlbaranes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBySinAlbaran" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBySinAlbaran" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBySinAlbaran">
+              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.vAlbaranes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBySinAlbaran" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBySinAlbaran" GeneratorSourceName="FillBySinAlbaran" GetMethodModifier="Public" GetMethodName="GetDataBySinAlbaran" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBySinAlbaran" UserSourceName="FillBySinAlbaran">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        IdEmpresa, IdAlbaranCab, IdObra, IdProveedor, NumAlbaran, ConsecutivoAlbaran, FechaAlbaran, Valorado, Utilizado, FacturaRecibida, Observaciones, SinAlbaran, 
-                         NumMatriz, NumObra, SerieObra, DesObra, DesProveedor, IdProducto, Cantidad, Precio, Descuento, IdLugarUso, IdTrabajador, DesLugarUso, NumTrabajador, 
-                         NomTrabajador, ApeTrabajador, CodProductoInterno, DesProducto, IdUMedidaProv, CodUmedida, DesUmedida
+                    <CommandText>SELECT        ApeTrabajador, Cantidad, CodProductoInterno, CodUmedida, ConsecutivoAlbaran, DesLugarUso, DesObra, DesProducto, DesProveedor, DesUmedida, Descuento, FacturaRecibida, FechaAlbaran, IdAlbaranCab, IdEmpresa, 
+                         IdLugarUso, IdObra, IdProducto, IdProveedor, IdTrabajador, IdUMedidaProv, NomTrabajador, NumAlbaran, NumMatriz, NumObra, NumTrabajador, Observaciones, Precio, SerieObra, SinAlbaran, Utilizado, Valorado, 
+                         ISNULL(EmailProveedor, '') AS EmailProveedor
 FROM            vAlbaranes
-WHERE        (IdEmpresa = @Empresa) AND (ISNULL(SinAlbaran, 0) = 1)</CommandText>
+WHERE        (IdEmpresa = @Empresa) AND (ISNULL(SinAlbaran, 0) = 1) AND (FechaAlbaran BETWEEN @FechaIni AND @FechaFin)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="Empresa" ColumnName="IdEmpresa" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Empresa" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IdEmpresa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FechaIni" ColumnName="FechaAlbaran" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaIni" Precision="0" ProviderType="DateTime" Scale="0" Size="3" SourceColumn="FechaAlbaran" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FechaFin" ColumnName="FechaAlbaran" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="3" SourceColumn="FechaAlbaran" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -335,6 +338,66 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ServidorSMTPTableAdapter" GeneratorDataComponentClassName="ServidorSMTPTableAdapter" Name="ServidorSMTP" UserDataComponentName="ServidorSMTPTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.ServidorSMTP" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [ServidorSMTP] ([IdSMTP], [NombreServidorSMTP], [PuertoSMTP], [HabilitarSSL], [UsarCredencialesPorDefecto], [Usuario], [Clave]) VALUES (@IdSMTP, @NombreServidorSMTP, @PuertoSMTP, @HabilitarSSL, @UsarCredencialesPorDefecto, @Usuario, @Clave)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdSMTP" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdSMTP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@NombreServidorSMTP" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NombreServidorSMTP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PuertoSMTP" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PuertoSMTP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@HabilitarSSL" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="HabilitarSSL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@UsarCredencialesPorDefecto" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="UsarCredencialesPorDefecto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Clave" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Clave" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        IdSMTP, NombreServidorSMTP, PuertoSMTP, HabilitarSSL, UsarCredencialesPorDefecto, Usuario, Clave
+FROM            ServidorSMTP</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdSMTP" DataSetColumn="IdSMTP" />
+              <Mapping SourceColumn="NombreServidorSMTP" DataSetColumn="NombreServidorSMTP" />
+              <Mapping SourceColumn="PuertoSMTP" DataSetColumn="PuertoSMTP" />
+              <Mapping SourceColumn="HabilitarSSL" DataSetColumn="HabilitarSSL" />
+              <Mapping SourceColumn="UsarCredencialesPorDefecto" DataSetColumn="UsarCredencialesPorDefecto" />
+              <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="Clave" DataSetColumn="Clave" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProveedoresSinAlbaranTableAdapter" GeneratorDataComponentClassName="ProveedoresSinAlbaranTableAdapter" Name="ProveedoresSinAlbaran" UserDataComponentName="ProveedoresSinAlbaranTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Promowork_dataConnection (Settings)" DbObjectName="Promowork_data.dbo.vAlbaranes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillbySinAlbaran" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="FillbySinAlbaran" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="FillbySinAlbaran">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT DesProveedor, ISNULL(EmailProveedor, '') AS EmailProveedor
+FROM            vAlbaranes
+WHERE        (IdEmpresa = @Empresa) AND (ISNULL(SinAlbaran, 0) = 1) AND (FechaAlbaran BETWEEN @FechaIni AND @FechaFin)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Empresa" ColumnName="IdEmpresa" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Empresa" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IdEmpresa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FechaIni" ColumnName="FechaAlbaran" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaIni" Precision="0" ProviderType="DateTime" Scale="0" Size="3" SourceColumn="FechaAlbaran" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FechaFin" ColumnName="FechaAlbaran" DataSourceName="Promowork_data.dbo.vAlbaranes" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="3" SourceColumn="FechaAlbaran" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DesProveedor" DataSetColumn="DesProveedor" />
+              <Mapping SourceColumn="EmailProveedor" DataSetColumn="EmailProveedor" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -343,7 +406,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
   <xs:element name="DatosReportesNuevos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatosReportesNuevos" msprop:Generator_UserDSName="DatosReportesNuevos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vTotalPorObrasConCalculos" msprop:Generator_TableClassName="vTotalPorObrasConCalculosDataTable" msprop:Generator_TableVarName="tablevTotalPorObrasConCalculos" msprop:Generator_RowChangedName="vTotalPorObrasConCalculosRowChanged" msprop:Generator_TablePropName="vTotalPorObrasConCalculos" msprop:Generator_RowDeletingName="vTotalPorObrasConCalculosRowDeleting" msprop:Generator_RowChangingName="vTotalPorObrasConCalculosRowChanging" msprop:Generator_RowEvHandlerName="vTotalPorObrasConCalculosRowChangeEventHandler" msprop:Generator_RowDeletedName="vTotalPorObrasConCalculosRowDeleted" msprop:Generator_RowClassName="vTotalPorObrasConCalculosRow" msprop:Generator_UserTableName="vTotalPorObrasConCalculos" msprop:Generator_RowEvArgName="vTotalPorObrasConCalculosRowChangeEvent">
+        <xs:element name="vTotalPorObrasConCalculos" msprop:Generator_TableClassName="vTotalPorObrasConCalculosDataTable" msprop:Generator_TableVarName="tablevTotalPorObrasConCalculos" msprop:Generator_TablePropName="vTotalPorObrasConCalculos" msprop:Generator_RowDeletingName="vTotalPorObrasConCalculosRowDeleting" msprop:Generator_RowChangingName="vTotalPorObrasConCalculosRowChanging" msprop:Generator_RowEvHandlerName="vTotalPorObrasConCalculosRowChangeEventHandler" msprop:Generator_RowDeletedName="vTotalPorObrasConCalculosRowDeleted" msprop:Generator_UserTableName="vTotalPorObrasConCalculos" msprop:Generator_RowChangedName="vTotalPorObrasConCalculosRowChanged" msprop:Generator_RowEvArgName="vTotalPorObrasConCalculosRowChangeEvent" msprop:Generator_RowClassName="vTotalPorObrasConCalculosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdObra" msprop:Generator_ColumnVarNameInTable="columnIdObra" msprop:Generator_ColumnPropNameInRow="IdObra" msprop:Generator_ColumnPropNameInTable="IdObraColumn" msprop:Generator_UserColumnName="IdObra" type="xs:int" />
@@ -389,7 +452,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vAgenda" msprop:Generator_TableClassName="vAgendaDataTable" msprop:Generator_TableVarName="tablevAgenda" msprop:Generator_RowChangedName="vAgendaRowChanged" msprop:Generator_TablePropName="vAgenda" msprop:Generator_RowDeletingName="vAgendaRowDeleting" msprop:Generator_RowChangingName="vAgendaRowChanging" msprop:Generator_RowEvHandlerName="vAgendaRowChangeEventHandler" msprop:Generator_RowDeletedName="vAgendaRowDeleted" msprop:Generator_RowClassName="vAgendaRow" msprop:Generator_UserTableName="vAgenda" msprop:Generator_RowEvArgName="vAgendaRowChangeEvent">
+        <xs:element name="vAgenda" msprop:Generator_TableClassName="vAgendaDataTable" msprop:Generator_TableVarName="tablevAgenda" msprop:Generator_TablePropName="vAgenda" msprop:Generator_RowDeletingName="vAgendaRowDeleting" msprop:Generator_RowChangingName="vAgendaRowChanging" msprop:Generator_RowEvHandlerName="vAgendaRowChangeEventHandler" msprop:Generator_RowDeletedName="vAgendaRowDeleted" msprop:Generator_UserTableName="vAgenda" msprop:Generator_RowChangedName="vAgendaRowChanged" msprop:Generator_RowEvArgName="vAgendaRowChangeEvent" msprop:Generator_RowClassName="vAgendaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:int" minOccurs="0" />
@@ -454,7 +517,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ListadoObras" msprop:Generator_TableClassName="ListadoObrasDataTable" msprop:Generator_TableVarName="tableListadoObras" msprop:Generator_RowChangedName="ListadoObrasRowChanged" msprop:Generator_TablePropName="ListadoObras" msprop:Generator_RowDeletingName="ListadoObrasRowDeleting" msprop:Generator_RowChangingName="ListadoObrasRowChanging" msprop:Generator_RowEvHandlerName="ListadoObrasRowChangeEventHandler" msprop:Generator_RowDeletedName="ListadoObrasRowDeleted" msprop:Generator_RowClassName="ListadoObrasRow" msprop:Generator_UserTableName="ListadoObras" msprop:Generator_RowEvArgName="ListadoObrasRowChangeEvent">
+        <xs:element name="ListadoObras" msprop:Generator_TableClassName="ListadoObrasDataTable" msprop:Generator_TableVarName="tableListadoObras" msprop:Generator_TablePropName="ListadoObras" msprop:Generator_RowDeletingName="ListadoObrasRowDeleting" msprop:Generator_RowChangingName="ListadoObrasRowChanging" msprop:Generator_RowEvHandlerName="ListadoObrasRowChangeEventHandler" msprop:Generator_RowDeletedName="ListadoObrasRowDeleted" msprop:Generator_UserTableName="ListadoObras" msprop:Generator_RowChangedName="ListadoObrasRowChanged" msprop:Generator_RowEvArgName="ListadoObrasRowChangeEvent" msprop:Generator_RowClassName="ListadoObrasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdObra" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdObra" msprop:Generator_ColumnPropNameInRow="IdObra" msprop:Generator_ColumnPropNameInTable="IdObraColumn" msprop:Generator_UserColumnName="IdObra" type="xs:int" />
@@ -509,7 +572,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vAgendaGastosGenerales" msprop:Generator_TableClassName="vAgendaGastosGeneralesDataTable" msprop:Generator_TableVarName="tablevAgendaGastosGenerales" msprop:Generator_RowChangedName="vAgendaGastosGeneralesRowChanged" msprop:Generator_TablePropName="vAgendaGastosGenerales" msprop:Generator_RowDeletingName="vAgendaGastosGeneralesRowDeleting" msprop:Generator_RowChangingName="vAgendaGastosGeneralesRowChanging" msprop:Generator_RowEvHandlerName="vAgendaGastosGeneralesRowChangeEventHandler" msprop:Generator_RowDeletedName="vAgendaGastosGeneralesRowDeleted" msprop:Generator_RowClassName="vAgendaGastosGeneralesRow" msprop:Generator_UserTableName="vAgendaGastosGenerales" msprop:Generator_RowEvArgName="vAgendaGastosGeneralesRowChangeEvent">
+        <xs:element name="vAgendaGastosGenerales" msprop:Generator_TableClassName="vAgendaGastosGeneralesDataTable" msprop:Generator_TableVarName="tablevAgendaGastosGenerales" msprop:Generator_TablePropName="vAgendaGastosGenerales" msprop:Generator_RowDeletingName="vAgendaGastosGeneralesRowDeleting" msprop:Generator_RowChangingName="vAgendaGastosGeneralesRowChanging" msprop:Generator_RowEvHandlerName="vAgendaGastosGeneralesRowChangeEventHandler" msprop:Generator_RowDeletedName="vAgendaGastosGeneralesRowDeleted" msprop:Generator_UserTableName="vAgendaGastosGenerales" msprop:Generator_RowChangedName="vAgendaGastosGeneralesRowChanged" msprop:Generator_RowEvArgName="vAgendaGastosGeneralesRowChangeEvent" msprop:Generator_RowClassName="vAgendaGastosGeneralesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:int" />
@@ -562,7 +625,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vAlbaranes" msprop:Generator_TableClassName="vAlbaranesDataTable" msprop:Generator_TableVarName="tablevAlbaranes" msprop:Generator_TablePropName="vAlbaranes" msprop:Generator_RowDeletingName="vAlbaranesRowDeleting" msprop:Generator_RowChangingName="vAlbaranesRowChanging" msprop:Generator_RowEvHandlerName="vAlbaranesRowChangeEventHandler" msprop:Generator_RowDeletedName="vAlbaranesRowDeleted" msprop:Generator_UserTableName="vAlbaranes" msprop:Generator_RowChangedName="vAlbaranesRowChanged" msprop:Generator_RowEvArgName="vAlbaranesRowChangeEvent" msprop:Generator_RowClassName="vAlbaranesRow">
+        <xs:element name="vAlbaranes" msprop:Generator_TableClassName="vAlbaranesDataTable" msprop:Generator_TableVarName="tablevAlbaranes" msprop:Generator_RowChangedName="vAlbaranesRowChanged" msprop:Generator_TablePropName="vAlbaranes" msprop:Generator_RowDeletingName="vAlbaranesRowDeleting" msprop:Generator_RowChangingName="vAlbaranesRowChanging" msprop:Generator_RowEvHandlerName="vAlbaranesRowChangeEventHandler" msprop:Generator_RowDeletedName="vAlbaranesRowDeleted" msprop:Generator_RowClassName="vAlbaranesRow" msprop:Generator_UserTableName="vAlbaranes" msprop:Generator_RowEvArgName="vAlbaranesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdEmpresa" msprop:Generator_ColumnVarNameInTable="columnIdEmpresa" msprop:Generator_ColumnPropNameInRow="IdEmpresa" msprop:Generator_ColumnPropNameInTable="IdEmpresaColumn" msprop:Generator_UserColumnName="IdEmpresa" type="xs:int" minOccurs="0" />
@@ -669,10 +732,17 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="EmailProveedor" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="EmailProveedor" msprop:Generator_ColumnVarNameInTable="columnEmailProveedor" msprop:Generator_ColumnPropNameInTable="EmailProveedorColumn" msprop:Generator_UserColumnName="EmailProveedor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FacturasPendientesCobro" msprop:Generator_TableClassName="FacturasPendientesCobroDataTable" msprop:Generator_TableVarName="tableFacturasPendientesCobro" msprop:Generator_TablePropName="FacturasPendientesCobro" msprop:Generator_RowDeletingName="FacturasPendientesCobroRowDeleting" msprop:Generator_RowChangingName="FacturasPendientesCobroRowChanging" msprop:Generator_RowEvHandlerName="FacturasPendientesCobroRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturasPendientesCobroRowDeleted" msprop:Generator_UserTableName="FacturasPendientesCobro" msprop:Generator_RowChangedName="FacturasPendientesCobroRowChanged" msprop:Generator_RowEvArgName="FacturasPendientesCobroRowChangeEvent" msprop:Generator_RowClassName="FacturasPendientesCobroRow">
+        <xs:element name="FacturasPendientesCobro" msprop:Generator_TableClassName="FacturasPendientesCobroDataTable" msprop:Generator_TableVarName="tableFacturasPendientesCobro" msprop:Generator_RowChangedName="FacturasPendientesCobroRowChanged" msprop:Generator_TablePropName="FacturasPendientesCobro" msprop:Generator_RowDeletingName="FacturasPendientesCobroRowDeleting" msprop:Generator_RowChangingName="FacturasPendientesCobroRowChanging" msprop:Generator_RowEvHandlerName="FacturasPendientesCobroRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturasPendientesCobroRowDeleted" msprop:Generator_RowClassName="FacturasPendientesCobroRow" msprop:Generator_UserTableName="FacturasPendientesCobro" msprop:Generator_RowEvArgName="FacturasPendientesCobroRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdFactCab" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdFactCab" msprop:Generator_ColumnPropNameInRow="IdFactCab" msprop:Generator_ColumnPropNameInTable="IdFactCabColumn" msprop:Generator_UserColumnName="IdFactCab" type="xs:int" />
@@ -759,7 +829,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vPendienteCobro" msprop:Generator_TableClassName="vPendienteCobroDataTable" msprop:Generator_TableVarName="tablevPendienteCobro" msprop:Generator_TablePropName="vPendienteCobro" msprop:Generator_RowDeletingName="vPendienteCobroRowDeleting" msprop:Generator_RowChangingName="vPendienteCobroRowChanging" msprop:Generator_RowEvHandlerName="vPendienteCobroRowChangeEventHandler" msprop:Generator_RowDeletedName="vPendienteCobroRowDeleted" msprop:Generator_UserTableName="vPendienteCobro" msprop:Generator_RowChangedName="vPendienteCobroRowChanged" msprop:Generator_RowEvArgName="vPendienteCobroRowChangeEvent" msprop:Generator_RowClassName="vPendienteCobroRow">
+        <xs:element name="vPendienteCobro" msprop:Generator_TableClassName="vPendienteCobroDataTable" msprop:Generator_TableVarName="tablevPendienteCobro" msprop:Generator_RowChangedName="vPendienteCobroRowChanged" msprop:Generator_TablePropName="vPendienteCobro" msprop:Generator_RowDeletingName="vPendienteCobroRowDeleting" msprop:Generator_RowChangingName="vPendienteCobroRowChanging" msprop:Generator_RowEvHandlerName="vPendienteCobroRowChangeEventHandler" msprop:Generator_RowDeletedName="vPendienteCobroRowDeleted" msprop:Generator_RowClassName="vPendienteCobroRow" msprop:Generator_UserTableName="vPendienteCobro" msprop:Generator_RowEvArgName="vPendienteCobroRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdFactCab" msprop:Generator_ColumnVarNameInTable="columnIdFactCab" msprop:Generator_ColumnPropNameInRow="IdFactCab" msprop:Generator_ColumnPropNameInTable="IdFactCabColumn" msprop:Generator_UserColumnName="IdFactCab" type="xs:int" />
@@ -843,6 +913,57 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))</CommandText>
               </xs:element>
               <xs:element name="IdCobro" msprop:Generator_ColumnVarNameInTable="columnIdCobro" msprop:Generator_ColumnPropNameInRow="IdCobro" msprop:Generator_ColumnPropNameInTable="IdCobroColumn" msprop:Generator_UserColumnName="IdCobro" type="xs:int" minOccurs="0" />
               <xs:element name="ImpTotalCob" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnImpTotalCob" msprop:Generator_ColumnPropNameInRow="ImpTotalCob" msprop:Generator_ColumnPropNameInTable="ImpTotalCobColumn" msprop:Generator_UserColumnName="ImpTotalCob" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ServidorSMTP" msprop:Generator_TableClassName="ServidorSMTPDataTable" msprop:Generator_TableVarName="tableServidorSMTP" msprop:Generator_TablePropName="ServidorSMTP" msprop:Generator_RowDeletingName="ServidorSMTPRowDeleting" msprop:Generator_RowChangingName="ServidorSMTPRowChanging" msprop:Generator_RowEvHandlerName="ServidorSMTPRowChangeEventHandler" msprop:Generator_RowDeletedName="ServidorSMTPRowDeleted" msprop:Generator_UserTableName="ServidorSMTP" msprop:Generator_RowChangedName="ServidorSMTPRowChanged" msprop:Generator_RowEvArgName="ServidorSMTPRowChangeEvent" msprop:Generator_RowClassName="ServidorSMTPRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdSMTP" msprop:Generator_ColumnVarNameInTable="columnIdSMTP" msprop:Generator_ColumnPropNameInRow="IdSMTP" msprop:Generator_ColumnPropNameInTable="IdSMTPColumn" msprop:Generator_UserColumnName="IdSMTP" type="xs:int" />
+              <xs:element name="NombreServidorSMTP" msprop:Generator_ColumnVarNameInTable="columnNombreServidorSMTP" msprop:Generator_ColumnPropNameInRow="NombreServidorSMTP" msprop:Generator_ColumnPropNameInTable="NombreServidorSMTPColumn" msprop:Generator_UserColumnName="NombreServidorSMTP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PuertoSMTP" msprop:Generator_ColumnVarNameInTable="columnPuertoSMTP" msprop:Generator_ColumnPropNameInRow="PuertoSMTP" msprop:Generator_ColumnPropNameInTable="PuertoSMTPColumn" msprop:Generator_UserColumnName="PuertoSMTP" type="xs:int" minOccurs="0" />
+              <xs:element name="HabilitarSSL" msprop:Generator_ColumnVarNameInTable="columnHabilitarSSL" msprop:Generator_ColumnPropNameInRow="HabilitarSSL" msprop:Generator_ColumnPropNameInTable="HabilitarSSLColumn" msprop:Generator_UserColumnName="HabilitarSSL" type="xs:boolean" minOccurs="0" />
+              <xs:element name="UsarCredencialesPorDefecto" msprop:Generator_ColumnVarNameInTable="columnUsarCredencialesPorDefecto" msprop:Generator_ColumnPropNameInRow="UsarCredencialesPorDefecto" msprop:Generator_ColumnPropNameInTable="UsarCredencialesPorDefectoColumn" msprop:Generator_UserColumnName="UsarCredencialesPorDefecto" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Clave" msprop:Generator_ColumnVarNameInTable="columnClave" msprop:Generator_ColumnPropNameInRow="Clave" msprop:Generator_ColumnPropNameInTable="ClaveColumn" msprop:Generator_UserColumnName="Clave" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProveedoresSinAlbaran" msprop:Generator_TableClassName="ProveedoresSinAlbaranDataTable" msprop:Generator_TableVarName="tableProveedoresSinAlbaran" msprop:Generator_TablePropName="ProveedoresSinAlbaran" msprop:Generator_RowDeletingName="ProveedoresSinAlbaranRowDeleting" msprop:Generator_RowChangingName="ProveedoresSinAlbaranRowChanging" msprop:Generator_RowEvHandlerName="ProveedoresSinAlbaranRowChangeEventHandler" msprop:Generator_RowDeletedName="ProveedoresSinAlbaranRowDeleted" msprop:Generator_UserTableName="ProveedoresSinAlbaran" msprop:Generator_RowChangedName="ProveedoresSinAlbaranRowChanged" msprop:Generator_RowEvArgName="ProveedoresSinAlbaranRowChangeEvent" msprop:Generator_RowClassName="ProveedoresSinAlbaranRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DesProveedor" msprop:Generator_ColumnVarNameInTable="columnDesProveedor" msprop:Generator_ColumnPropNameInRow="DesProveedor" msprop:Generator_ColumnPropNameInTable="DesProveedorColumn" msprop:Generator_UserColumnName="DesProveedor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmailProveedor" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEmailProveedor" msprop:Generator_ColumnPropNameInRow="EmailProveedor" msprop:Generator_ColumnPropNameInTable="EmailProveedorColumn" msprop:Generator_UserColumnName="EmailProveedor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -429,8 +429,9 @@ namespace Promowork
 
         private void btSinAlbaran_Click(object sender, EventArgs e)
         {
-            frmrptSinAlbaran frm = new frmrptSinAlbaran();
+            rptParametrosSinAlbaran frm = new rptParametrosSinAlbaran();
             frm.MdiParent = this.MdiParent;
+            frm.WindowState = FormWindowState.Normal;
             frm.Show();
             
         }

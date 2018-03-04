@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Promowork
 {
@@ -215,8 +217,17 @@ namespace Promowork
         {
             CalculaConversionUM(dirConversion);
         }
-        
 
-       
+        private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            GridCell[] celdasSeleccionadas = gridView1.GetSelectedCells();
+            GridView gridView = (GridView)sender;
+
+            var resultado = Utilidades.SumarCeldas(gridView, celdasSeleccionadas);
+
+            tbRecuentoSeleccion.Text = resultado.Recuento.ToString();
+            tbSumaSeleccion.Text = resultado.Suma.ToString("N2");
+            tbPromedioSeleccion.Text = resultado.Promedio.ToString("N2");
+        }
     }
 }

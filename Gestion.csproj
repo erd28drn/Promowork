@@ -191,6 +191,10 @@
     <Compile Include="ConceptosBanco.Designer.cs">
       <DependentUpon>ConceptosBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosReportesNuevos.cs">
+      <DependentUpon>DatosReportesNuevos.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EnumAlbaranUtilizado.cs" />
     <Compile Include="EnumCargaAlbaranes.cs" />
     <Compile Include="CustomEnumConverter.cs" />
@@ -215,16 +219,16 @@
     <Compile Include="frmrptPendienteCobro.Designer.cs">
       <DependentUpon>frmrptPendienteCobro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmrptSinAlbaran.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmrptSinAlbaran.Designer.cs">
-      <DependentUpon>frmrptSinAlbaran.cs</DependentUpon>
-    </Compile>
     <Compile Include="Promowork_dataDataSet.Designer.cs">
       <DependentUpon>Promowork_dataDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="rptParametrosSinAlbaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rptParametrosSinAlbaran.Designer.cs">
+      <DependentUpon>rptParametrosSinAlbaran.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
     <Compile Include="DatosAccesos.Designer.cs">
@@ -1066,9 +1070,6 @@
     <EmbeddedResource Include="ConsumosServiciosVehiculos.resx">
       <DependentUpon>ConsumosServiciosVehiculos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmrptSinAlbaran.resx">
-      <DependentUpon>frmrptSinAlbaran.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PendienteFacturarConResumen2.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1375,6 +1376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptParametrosSalarioTrabajadores.resx">
       <DependentUpon>RptParametrosSalarioTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptParametrosSinAlbaran.resx">
+      <DependentUpon>rptParametrosSinAlbaran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPendienteFacturar.resx">
       <DependentUpon>RptPendienteFacturar.cs</DependentUpon>
@@ -1752,6 +1756,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
     <Folder Include="Reportes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

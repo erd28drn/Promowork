@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label fechaAlbaranLabel;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
             this.datosAlbaranes = new Promowork.DatosAlbaranes();
             this.vRevisionAlbaranesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vRevisionAlbaranesTableAdapter = new Promowork.DatosAlbaranesTableAdapters.vRevisionAlbaranesTableAdapter();
@@ -73,6 +76,7 @@
             this.colFacturaRecibida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Filtro = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFacturaCompra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
@@ -89,6 +93,9 @@
             this.mesesAlbaranesTableAdapter = new Promowork.DatosAlbaranesTableAdapters.MesesAlbaranesTableAdapter();
             this.anosTableAdapter = new Promowork.DatosAlbaranesTableAdapters.AnosTableAdapter();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbSumaSeleccion = new DevExpress.XtraEditors.TextEdit();
+            this.tbRecuentoSeleccion = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.button2 = new System.Windows.Forms.Button();
             this.lbFlecha2 = new System.Windows.Forms.Label();
@@ -112,9 +119,12 @@
             this.vUMOrigenTableAdapter = new Promowork.DatosAlbaranesTableAdapters.vUMOrigenTableAdapter();
             this.vUMDestinoTableAdapter = new Promowork.DatosAlbaranesTableAdapters.vUMDestinoTableAdapter();
             this.vProductosConversionesTableAdapter = new Promowork.DatosAlbaranesTableAdapters.vProductosConversionesTableAdapter();
-            this.colFacturaCompra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tbPromedioSeleccion = new DevExpress.XtraEditors.TextEdit();
             label1 = new System.Windows.Forms.Label();
             fechaAlbaranLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datosAlbaranes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vRevisionAlbaranesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vRevisionAlbaranesGridControl)).BeginInit();
@@ -132,6 +142,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deFechaIni.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deFechaIni.Properties)).BeginInit();
             this.panel4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSumaSeleccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRecuentoSeleccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vProductosConversionesBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vUMDestinoBindingSource)).BeginInit();
@@ -140,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vUMOrigenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCantidadOrigen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbMultiplicador.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPromedioSeleccion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -159,6 +173,24 @@
             fechaAlbaranLabel.Size = new System.Drawing.Size(41, 13);
             fechaAlbaranLabel.TabIndex = 9;
             fechaAlbaranLabel.Text = "Desde:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(39, 48);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(37, 13);
+            label2.TabIndex = 25;
+            label2.Text = "Suma:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(19, 22);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(57, 13);
+            label3.TabIndex = 23;
+            label3.Text = "Recuento:";
             // 
             // datosAlbaranes
             // 
@@ -197,7 +229,7 @@
             this.vRevisionAlbaranesGridControl.Location = new System.Drawing.Point(0, 44);
             this.vRevisionAlbaranesGridControl.MainView = this.gridView1;
             this.vRevisionAlbaranesGridControl.Name = "vRevisionAlbaranesGridControl";
-            this.vRevisionAlbaranesGridControl.Size = new System.Drawing.Size(1541, 592);
+            this.vRevisionAlbaranesGridControl.Size = new System.Drawing.Size(1370, 555);
             this.vRevisionAlbaranesGridControl.TabIndex = 2;
             this.vRevisionAlbaranesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -264,6 +296,7 @@
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Obra, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDesProveedor, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
             // 
             // colIdAlbaranCab
             // 
@@ -623,6 +656,16 @@
             this.Filtro.VisibleIndex = 17;
             this.Filtro.Width = 42;
             // 
+            // colFacturaCompra
+            // 
+            this.colFacturaCompra.Caption = "Fra. Compra";
+            this.colFacturaCompra.FieldName = "FacturaCompra";
+            this.colFacturaCompra.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
+            this.colFacturaCompra.Name = "colFacturaCompra";
+            this.colFacturaCompra.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colFacturaCompra.Visible = true;
+            this.colFacturaCompra.VisibleIndex = 18;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
@@ -631,7 +674,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1541, 44);
+            this.panel1.Size = new System.Drawing.Size(1370, 44);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -771,6 +814,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.groupBox3);
             this.panel4.Controls.Add(this.labelControl7);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.lbFlecha2);
@@ -781,14 +825,47 @@
             this.panel4.Controls.Add(this.groupBox1);
             this.panel4.Controls.Add(this.tbMultiplicador);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 636);
+            this.panel4.Location = new System.Drawing.Point(0, 599);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1541, 84);
+            this.panel4.Size = new System.Drawing.Size(1370, 121);
             this.panel4.TabIndex = 5;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(label4);
+            this.groupBox3.Controls.Add(this.tbPromedioSeleccion);
+            this.groupBox3.Controls.Add(label2);
+            this.groupBox3.Controls.Add(this.tbSumaSeleccion);
+            this.groupBox3.Controls.Add(label3);
+            this.groupBox3.Controls.Add(this.tbRecuentoSeleccion);
+            this.groupBox3.Location = new System.Drawing.Point(14, 10);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(196, 99);
+            this.groupBox3.TabIndex = 70;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Selección";
+            // 
+            // tbSumaSeleccion
+            // 
+            this.tbSumaSeleccion.Location = new System.Drawing.Point(82, 45);
+            this.tbSumaSeleccion.Name = "tbSumaSeleccion";
+            this.tbSumaSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbSumaSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbSumaSeleccion.Size = new System.Drawing.Size(100, 20);
+            this.tbSumaSeleccion.TabIndex = 26;
+            // 
+            // tbRecuentoSeleccion
+            // 
+            this.tbRecuentoSeleccion.Location = new System.Drawing.Point(82, 19);
+            this.tbRecuentoSeleccion.Name = "tbRecuentoSeleccion";
+            this.tbRecuentoSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbRecuentoSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbRecuentoSeleccion.Size = new System.Drawing.Size(100, 20);
+            this.tbRecuentoSeleccion.TabIndex = 24;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(28, 27);
+            this.labelControl7.Location = new System.Drawing.Point(499, 72);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(43, 13);
             this.labelControl7.TabIndex = 14;
@@ -797,7 +874,7 @@
             // button2
             // 
             this.button2.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
-            this.button2.Location = new System.Drawing.Point(455, 43);
+            this.button2.Location = new System.Drawing.Point(926, 88);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(22, 21);
             this.button2.TabIndex = 69;
@@ -831,7 +908,7 @@
             this.cbxProducto.DataSource = this.vProductosConversionesBindingSource;
             this.cbxProducto.DisplayMember = "CodDesProducto";
             this.cbxProducto.FormattingEnabled = true;
-            this.cbxProducto.Location = new System.Drawing.Point(28, 43);
+            this.cbxProducto.Location = new System.Drawing.Point(499, 88);
             this.cbxProducto.Name = "cbxProducto";
             this.cbxProducto.Size = new System.Drawing.Size(421, 21);
             this.cbxProducto.TabIndex = 15;
@@ -1006,21 +1083,29 @@
             // 
             this.vProductosConversionesTableAdapter.ClearBeforeFill = true;
             // 
-            // colFacturaCompra
+            // label4
             // 
-            this.colFacturaCompra.Caption = "Fra. Compra";
-            this.colFacturaCompra.FieldName = "FacturaCompra";
-            this.colFacturaCompra.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
-            this.colFacturaCompra.Name = "colFacturaCompra";
-            this.colFacturaCompra.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
-            this.colFacturaCompra.Visible = true;
-            this.colFacturaCompra.VisibleIndex = 18;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(22, 75);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(54, 13);
+            label4.TabIndex = 27;
+            label4.Text = "Promedio:";
+            // 
+            // tbPromedioSeleccion
+            // 
+            this.tbPromedioSeleccion.Location = new System.Drawing.Point(82, 72);
+            this.tbPromedioSeleccion.Name = "tbPromedioSeleccion";
+            this.tbPromedioSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbPromedioSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbPromedioSeleccion.Size = new System.Drawing.Size(100, 20);
+            this.tbPromedioSeleccion.TabIndex = 28;
             // 
             // frmRevisionAlbaranes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1541, 720);
+            this.ClientSize = new System.Drawing.Size(1370, 720);
             this.Controls.Add(this.vRevisionAlbaranesGridControl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
@@ -1048,6 +1133,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.deFechaIni.Properties)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSumaSeleccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRecuentoSeleccion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vProductosConversionesBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1058,6 +1147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vUMOrigenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCantidadOrigen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbMultiplicador.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPromedioSeleccion.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1146,5 +1236,9 @@
         private System.Windows.Forms.BindingSource vProductosConversionesBindingSource;
         private DatosAlbaranesTableAdapters.vProductosConversionesTableAdapter vProductosConversionesTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn colFacturaCompra;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private DevExpress.XtraEditors.TextEdit tbSumaSeleccion;
+        private DevExpress.XtraEditors.TextEdit tbRecuentoSeleccion;
+        private DevExpress.XtraEditors.TextEdit tbPromedioSeleccion;
     }
 }
