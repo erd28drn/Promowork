@@ -32,11 +32,13 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             this.vAlbaranesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DatosReportesNuevos = new Promowork.DatosReportesNuevos();
             this.EmpresasActualBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Promowork_dataDataSet = new Promowork.Promowork_dataDataSet();
             this.colValido = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEnviado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -52,11 +54,11 @@
             this.tabResumenEnvioCorreo = new System.Windows.Forms.TabPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIdProveedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMarca = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colProveedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEnviado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMensajeError = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRespuesta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.vAlbaranesTableAdapter = new Promowork.DatosReportesNuevosTableAdapters.vAlbaranesTableAdapter();
             this.proveedoresSinAlbaranBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.proveedoresSinAlbaranTableAdapter = new Promowork.DatosReportesNuevosTableAdapters.ProveedoresSinAlbaranTableAdapter();
@@ -108,6 +110,21 @@
             this.colValido.Visible = true;
             this.colValido.VisibleIndex = 3;
             this.colValido.Width = 118;
+            // 
+            // colEnviado
+            // 
+            this.colEnviado.AppearanceCell.Options.UseTextOptions = true;
+            this.colEnviado.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colEnviado.AppearanceHeader.Options.UseTextOptions = true;
+            this.colEnviado.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colEnviado.Caption = "Enviado";
+            this.colEnviado.FieldName = "Enviado";
+            this.colEnviado.Name = "colEnviado";
+            this.colEnviado.OptionsColumn.ReadOnly = true;
+            this.colEnviado.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.colEnviado.Visible = true;
+            this.colEnviado.VisibleIndex = 4;
+            this.colEnviado.Width = 112;
             // 
             // button1
             // 
@@ -195,6 +212,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(568, 11);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 23);
@@ -250,25 +268,40 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIdProveedor,
             this.colMarca,
             this.colProveedor,
             this.colEmail,
             this.colValido,
             this.colEnviado,
-            this.colMensajeError});
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.PeachPuff;
+            this.colRespuesta});
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             styleFormatCondition1.Appearance.Options.HighPriority = true;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
             styleFormatCondition1.ApplyToRow = true;
             styleFormatCondition1.Column = this.colValido;
             styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
             styleFormatCondition1.Value1 = false;
+            styleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Red;
+            styleFormatCondition2.Appearance.Options.HighPriority = true;
+            styleFormatCondition2.Appearance.Options.UseForeColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Column = this.colEnviado;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition2.Value1 = false;
             this.gridView1.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
+            styleFormatCondition1,
+            styleFormatCondition2});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+            this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
+            // 
+            // colIdProveedor
+            // 
+            this.colIdProveedor.Caption = "IdProveedor";
+            this.colIdProveedor.FieldName = "IdProveedor";
+            this.colIdProveedor.Name = "colIdProveedor";
             // 
             // colMarca
             // 
@@ -303,30 +336,15 @@
             this.colEmail.VisibleIndex = 2;
             this.colEmail.Width = 316;
             // 
-            // colEnviado
+            // colRespuesta
             // 
-            this.colEnviado.AppearanceCell.Options.UseTextOptions = true;
-            this.colEnviado.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colEnviado.AppearanceHeader.Options.UseTextOptions = true;
-            this.colEnviado.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colEnviado.Caption = "Enviado";
-            this.colEnviado.FieldName = "Enviado";
-            this.colEnviado.Name = "colEnviado";
-            this.colEnviado.OptionsColumn.ReadOnly = true;
-            this.colEnviado.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
-            this.colEnviado.Visible = true;
-            this.colEnviado.VisibleIndex = 4;
-            this.colEnviado.Width = 112;
-            // 
-            // colMensajeError
-            // 
-            this.colMensajeError.Caption = "Mensaje Error";
-            this.colMensajeError.FieldName = "MensajeError";
-            this.colMensajeError.Name = "colMensajeError";
-            this.colMensajeError.OptionsColumn.ReadOnly = true;
-            this.colMensajeError.Visible = true;
-            this.colMensajeError.VisibleIndex = 5;
-            this.colMensajeError.Width = 670;
+            this.colRespuesta.Caption = "Resultado";
+            this.colRespuesta.FieldName = "Respuesta";
+            this.colRespuesta.Name = "colRespuesta";
+            this.colRespuesta.OptionsColumn.ReadOnly = true;
+            this.colRespuesta.Visible = true;
+            this.colRespuesta.VisibleIndex = 5;
+            this.colRespuesta.Width = 670;
             // 
             // vAlbaranesTableAdapter
             // 
@@ -410,11 +428,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEmail;
         private DevExpress.XtraGrid.Columns.GridColumn colValido;
         private DevExpress.XtraGrid.Columns.GridColumn colEnviado;
-        private DevExpress.XtraGrid.Columns.GridColumn colMensajeError;
+        private DevExpress.XtraGrid.Columns.GridColumn colRespuesta;
         private System.Windows.Forms.BindingSource proveedoresSinAlbaranBindingSource;
         private DatosReportesNuevosTableAdapters.ProveedoresSinAlbaranTableAdapter proveedoresSinAlbaranTableAdapter;
         private DatosReportesNuevosTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.Columns.GridColumn colMarca;
         private System.Windows.Forms.Button button3;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdProveedor;
     }
 }

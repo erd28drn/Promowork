@@ -168,6 +168,14 @@
           <DataField>Extra2</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="ImporteCap">
+          <DataField>ImporteCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteCab">
+          <DataField>ImporteCab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>Promowork_dataDataSet</DataSourceName>
@@ -175,7 +183,7 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>Promowork_dataDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USUARIO2\Google Drive\Promowork\Promowork_dataDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\USUARIO\Google Drive\Promowork\Promowork_dataDataSet.xsd</rd:SchemaPath>
         <rd:TableName>PresupuestoActual</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod />
@@ -797,7 +805,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!aFacturar.Value)</Value>
+                              <Value>=Fields!aFacturar.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -835,7 +843,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Precio.Value)</Value>
+                              <Value>=Fields!Precio.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -874,7 +882,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ImporteaFacturar.Value)</Value>
+                              <Value>=Fields!ImporteaFacturar.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1112,7 +1120,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!aFacturar1.Value)</Value>
+                              <Value>=Fields!aFacturar1.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1150,7 +1158,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Precio1.Value)</Value>
+                              <Value>=Fields!Precio1.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1189,7 +1197,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ImporteaFacturar.Value)</Value>
+                              <Value>=Fields!ImporteaFacturar.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>

@@ -4655,6 +4655,8 @@ namespace Promowork {
             
             private global::System.Data.DataColumn columnClave;
             
+            private global::System.Data.DataColumn columnIdEmpresa;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ServidorSMTPDataTable() {
@@ -4746,6 +4748,14 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdEmpresaColumn {
+                get {
+                    return this.columnIdEmpresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4781,7 +4791,7 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ServidorSMTPRow AddServidorSMTPRow(int IdSMTP, string NombreServidorSMTP, int PuertoSMTP, bool HabilitarSSL, bool UsarCredencialesPorDefecto, string Usuario, string Clave) {
+            public ServidorSMTPRow AddServidorSMTPRow(int IdSMTP, string NombreServidorSMTP, int PuertoSMTP, bool HabilitarSSL, bool UsarCredencialesPorDefecto, string Usuario, string Clave, int IdEmpresa) {
                 ServidorSMTPRow rowServidorSMTPRow = ((ServidorSMTPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdSMTP,
@@ -4790,7 +4800,8 @@ namespace Promowork {
                         HabilitarSSL,
                         UsarCredencialesPorDefecto,
                         Usuario,
-                        Clave};
+                        Clave,
+                        IdEmpresa};
                 rowServidorSMTPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowServidorSMTPRow);
                 return rowServidorSMTPRow;
@@ -4820,6 +4831,7 @@ namespace Promowork {
                 this.columnUsarCredencialesPorDefecto = base.Columns["UsarCredencialesPorDefecto"];
                 this.columnUsuario = base.Columns["Usuario"];
                 this.columnClave = base.Columns["Clave"];
+                this.columnIdEmpresa = base.Columns["IdEmpresa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4839,6 +4851,8 @@ namespace Promowork {
                 base.Columns.Add(this.columnUsuario);
                 this.columnClave = new global::System.Data.DataColumn("Clave", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnClave);
+                this.columnIdEmpresa = new global::System.Data.DataColumn("IdEmpresa", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdEmpresa);
                 this.columnIdSMTP.AllowDBNull = false;
                 this.columnNombreServidorSMTP.MaxLength = 50;
                 this.columnUsuario.MaxLength = 50;
@@ -4980,6 +4994,8 @@ namespace Promowork {
             
             private global::System.Data.DataColumn columnEmailProveedor;
             
+            private global::System.Data.DataColumn columnIdProveedor;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProveedoresSinAlbaranDataTable() {
@@ -5031,6 +5047,14 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdProveedorColumn {
+                get {
+                    return this.columnIdProveedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5066,11 +5090,12 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProveedoresSinAlbaranRow AddProveedoresSinAlbaranRow(string DesProveedor, string EmailProveedor) {
+            public ProveedoresSinAlbaranRow AddProveedoresSinAlbaranRow(string DesProveedor, string EmailProveedor, int IdProveedor) {
                 ProveedoresSinAlbaranRow rowProveedoresSinAlbaranRow = ((ProveedoresSinAlbaranRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DesProveedor,
-                        EmailProveedor};
+                        EmailProveedor,
+                        IdProveedor};
                 rowProveedoresSinAlbaranRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProveedoresSinAlbaranRow);
                 return rowProveedoresSinAlbaranRow;
@@ -5095,6 +5120,7 @@ namespace Promowork {
             internal void InitVars() {
                 this.columnDesProveedor = base.Columns["DesProveedor"];
                 this.columnEmailProveedor = base.Columns["EmailProveedor"];
+                this.columnIdProveedor = base.Columns["IdProveedor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5104,6 +5130,8 @@ namespace Promowork {
                 base.Columns.Add(this.columnDesProveedor);
                 this.columnEmailProveedor = new global::System.Data.DataColumn("EmailProveedor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmailProveedor);
+                this.columnIdProveedor = new global::System.Data.DataColumn("IdProveedor", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdProveedor);
                 this.columnDesProveedor.AllowDBNull = false;
                 this.columnDesProveedor.MaxLength = 100;
                 this.columnEmailProveedor.ReadOnly = true;
@@ -9265,6 +9293,22 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdEmpresa {
+                get {
+                    try {
+                        return ((int)(this[this.tableServidorSMTP.IdEmpresaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdEmpresa\' de la tabla \'ServidorSMTP\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServidorSMTP.IdEmpresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNombreServidorSMTPNull() {
                 return this.IsNull(this.tableServidorSMTP.NombreServidorSMTPColumn);
             }
@@ -9334,6 +9378,18 @@ namespace Promowork {
             public void SetClaveNull() {
                 this[this.tableServidorSMTP.ClaveColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdEmpresaNull() {
+                return this.IsNull(this.tableServidorSMTP.IdEmpresaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdEmpresaNull() {
+                this[this.tableServidorSMTP.IdEmpresaColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9380,6 +9436,23 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdProveedor {
+                get {
+                    try {
+                        return ((int)(this[this.tableProveedoresSinAlbaran.IdProveedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdProveedor\' de la tabla \'ProveedoresSinAlbaran\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableProveedoresSinAlbaran.IdProveedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEmailProveedorNull() {
                 return this.IsNull(this.tableProveedoresSinAlbaran.EmailProveedorColumn);
             }
@@ -9388,6 +9461,18 @@ namespace Promowork {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEmailProveedorNull() {
                 this[this.tableProveedoresSinAlbaran.EmailProveedorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdProveedorNull() {
+                return this.IsNull(this.tableProveedoresSinAlbaran.IdProveedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdProveedorNull() {
+                this[this.tableProveedoresSinAlbaran.IdProveedorColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11362,13 +11447,11 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             tableMapping.ColumnMappings.Add("UsarCredencialesPorDefecto", "UsarCredencialesPorDefecto");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
             tableMapping.ColumnMappings.Add("Clave", "Clave");
+            tableMapping.ColumnMappings.Add("IdEmpresa", "IdEmpresa");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [ServidorSMTP] ([IdSMTP], [NombreServidorSMTP], [PuertoSMTP], [Habili" +
-                "tarSSL], [UsarCredencialesPorDefecto], [Usuario], [Clave]) VALUES (@IdSMTP, @Nom" +
-                "breServidorSMTP, @PuertoSMTP, @HabilitarSSL, @UsarCredencialesPorDefecto, @Usuar" +
-                "io, @Clave)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ServidorSMTP] ([IdSMTP], [NombreServidorSMTP], [PuertoSMTP], [HabilitarSSL], [UsarCredencialesPorDefecto], [Usuario], [Clave], [IdEmpresa]) VALUES (@IdSMTP, @NombreServidorSMTP, @PuertoSMTP, @HabilitarSSL, @UsarCredencialesPorDefecto, @Usuario, @Clave, @IdEmpresa)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdSMTP", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdSMTP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreServidorSMTP", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NombreServidorSMTP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11377,6 +11460,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UsarCredencialesPorDefecto", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UsarCredencialesPorDefecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Clave", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Clave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdEmpresa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdEmpresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11393,16 +11477,24 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        IdSMTP, NombreServidorSMTP, PuertoSMTP, HabilitarSSL, UsarCredencia" +
-                "lesPorDefecto, Usuario, Clave\r\nFROM            ServidorSMTP";
+                "lesPorDefecto, Usuario, Clave, IdEmpresa\r\nFROM            ServidorSMTP\r\nWHERE   " +
+                "     (IdEmpresa = @Empresa)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Empresa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdEmpresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DatosReportesNuevos.ServidorSMTPDataTable dataTable) {
+        public virtual int Fill(DatosReportesNuevos.ServidorSMTPDataTable dataTable, global::System.Nullable<int> Empresa) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Empresa.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Empresa.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -11414,8 +11506,14 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DatosReportesNuevos.ServidorSMTPDataTable GetData() {
+        public virtual DatosReportesNuevos.ServidorSMTPDataTable GetData(global::System.Nullable<int> Empresa) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Empresa.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Empresa.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             DatosReportesNuevos.ServidorSMTPDataTable dataTable = new DatosReportesNuevos.ServidorSMTPDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -11454,7 +11552,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int IdSMTP, string NombreServidorSMTP, global::System.Nullable<int> PuertoSMTP, global::System.Nullable<bool> HabilitarSSL, global::System.Nullable<bool> UsarCredencialesPorDefecto, string Usuario, string Clave) {
+        public virtual int Insert(int IdSMTP, string NombreServidorSMTP, global::System.Nullable<int> PuertoSMTP, global::System.Nullable<bool> HabilitarSSL, global::System.Nullable<bool> UsarCredencialesPorDefecto, string Usuario, string Clave, global::System.Nullable<int> IdEmpresa) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IdSMTP));
             if ((NombreServidorSMTP == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -11491,6 +11589,12 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Clave));
+            }
+            if ((IdEmpresa.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(IdEmpresa.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11632,6 +11736,7 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             tableMapping.DataSetTable = "ProveedoresSinAlbaran";
             tableMapping.ColumnMappings.Add("DesProveedor", "DesProveedor");
             tableMapping.ColumnMappings.Add("EmailProveedor", "EmailProveedor");
+            tableMapping.ColumnMappings.Add("IdProveedor", "IdProveedor");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11648,9 +11753,9 @@ WHERE        (IdEmpresa = @Empresa) AND (IdCliente IN (@Clientes))";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DISTINCT DesProveedor, ISNULL(EmailProveedor, \'\') AS EmailProveedor\r\nFROM " +
-                "           vAlbaranes\r\nWHERE        (IdEmpresa = @Empresa) AND (ISNULL(SinAlbara" +
-                "n, 0) = 1) AND (FechaAlbaran BETWEEN @FechaIni AND @FechaFin)";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT IdProveedor, DesProveedor, ISNULL(EmailProveedor, \'\') AS EmailPro" +
+                "veedor\r\nFROM            vAlbaranes\r\nWHERE        (IdEmpresa = @Empresa) AND (ISN" +
+                "ULL(SinAlbaran, 0) = 1) AND (FechaAlbaran BETWEEN @FechaIni AND @FechaFin)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Empresa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdEmpresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAlbaran", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

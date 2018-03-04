@@ -38,6 +38,9 @@
             System.Windows.Forms.Label idObraLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label5;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlbaranes));
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -96,9 +99,16 @@
             this.colSinAlbaran = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdCompra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFacturaCompra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModificaImporteCompra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUtilizado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbPromedioSeleccion = new DevExpress.XtraEditors.TextEdit();
+            this.tbSumaSeleccion = new DevExpress.XtraEditors.TextEdit();
+            this.tbRecuentoSeleccion = new DevExpress.XtraEditors.TextEdit();
             this.tbFacturaCompra = new DevExpress.XtraEditors.TextEdit();
             this.chkSinAlbaran = new DevExpress.XtraEditors.CheckEdit();
             this.chkFacturaRecibida = new DevExpress.XtraEditors.CheckEdit();
@@ -182,6 +192,9 @@
             idObraLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvcbxUtilizadoEn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datosAlbaranes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albaranesCabBindingSource)).BeginInit();
@@ -205,6 +218,10 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPromedioSeleccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSumaSeleccion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRecuentoSeleccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFacturaCompra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSinAlbaran.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFacturaRecibida.Properties)).BeginInit();
@@ -331,7 +348,7 @@
             this.colUtilizadoEn.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colUtilizadoEn.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             this.colUtilizadoEn.Visible = true;
-            this.colUtilizadoEn.VisibleIndex = 8;
+            this.colUtilizadoEn.VisibleIndex = 9;
             this.colUtilizadoEn.Width = 129;
             // 
             // gvcbxUtilizadoEn
@@ -343,6 +360,33 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Utilizado en:")});
             this.gvcbxUtilizadoEn.Name = "gvcbxUtilizadoEn";
             this.gvcbxUtilizadoEn.NullText = "";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(310, 22);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(54, 13);
+            label4.TabIndex = 27;
+            label4.Text = "Promedio:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(137, 22);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(37, 13);
+            label3.TabIndex = 25;
+            label3.Text = "Suma:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(19, 22);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(57, 13);
+            label5.TabIndex = 23;
+            label5.Text = "Recuento:";
             // 
             // datosAlbaranes
             // 
@@ -590,6 +634,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.FooterPanel.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colIdAlbaranCab,
             this.colIdEmpresa,
@@ -605,7 +651,10 @@
             this.colSinAlbaran,
             this.colUtilizadoEn,
             this.colIdCompra,
-            this.colFacturaCompra});
+            this.colFacturaCompra,
+            this.colImporte,
+            this.colModificaImporteCompra,
+            this.colUtilizado});
             this.gridView1.CustomizationFormBounds = new System.Drawing.Rectangle(762, 446, 216, 185);
             styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Blue;
             styleFormatCondition1.Appearance.Options.HighPriority = true;
@@ -639,7 +688,9 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
             // 
             // colIdAlbaranCab
             // 
@@ -713,7 +764,7 @@
             this.colValorado.FieldName = "Valorado";
             this.colValorado.Name = "colValorado";
             this.colValorado.Visible = true;
-            this.colValorado.VisibleIndex = 6;
+            this.colValorado.VisibleIndex = 7;
             this.colValorado.Width = 45;
             // 
             // colObservaciones
@@ -780,7 +831,7 @@
             this.colFacturaRecibida.FieldName = "FacturaRecibida";
             this.colFacturaRecibida.Name = "colFacturaRecibida";
             this.colFacturaRecibida.Visible = true;
-            this.colFacturaRecibida.VisibleIndex = 5;
+            this.colFacturaRecibida.VisibleIndex = 6;
             this.colFacturaRecibida.Width = 43;
             // 
             // colSinAlbaran
@@ -788,7 +839,7 @@
             this.colSinAlbaran.FieldName = "SinAlbaran";
             this.colSinAlbaran.Name = "colSinAlbaran";
             this.colSinAlbaran.Visible = true;
-            this.colSinAlbaran.VisibleIndex = 7;
+            this.colSinAlbaran.VisibleIndex = 8;
             this.colSinAlbaran.Width = 45;
             // 
             // colIdCompra
@@ -804,7 +855,31 @@
             this.colFacturaCompra.Name = "colFacturaCompra";
             this.colFacturaCompra.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colFacturaCompra.Visible = true;
-            this.colFacturaCompra.VisibleIndex = 9;
+            this.colFacturaCompra.VisibleIndex = 10;
+            // 
+            // colImporte
+            // 
+            this.colImporte.AppearanceHeader.Options.UseTextOptions = true;
+            this.colImporte.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colImporte.Caption = "Total";
+            this.colImporte.DisplayFormat.FormatString = "C2";
+            this.colImporte.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colImporte.FieldName = "Importe";
+            this.colImporte.Name = "colImporte";
+            this.colImporte.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:c2}")});
+            this.colImporte.Visible = true;
+            this.colImporte.VisibleIndex = 5;
+            // 
+            // colModificaImporteCompra
+            // 
+            this.colModificaImporteCompra.FieldName = "ModificaImporteCompra";
+            this.colModificaImporteCompra.Name = "colModificaImporteCompra";
+            // 
+            // colUtilizado
+            // 
+            this.colUtilizado.FieldName = "Utilizado";
+            this.colUtilizado.Name = "colUtilizado";
             // 
             // splitContainer1
             // 
@@ -855,6 +930,7 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.AutoScroll = true;
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer3.Panel1.Controls.Add(label2);
             this.splitContainer3.Panel1.Controls.Add(label1);
             this.splitContainer3.Panel1.Controls.Add(this.tbFacturaCompra);
@@ -883,8 +959,50 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.observacionesProveedoresGridControl);
             this.splitContainer3.Size = new System.Drawing.Size(494, 462);
-            this.splitContainer3.SplitterDistance = 327;
+            this.splitContainer3.SplitterDistance = 373;
             this.splitContainer3.TabIndex = 19;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(label4);
+            this.groupBox3.Controls.Add(this.tbPromedioSeleccion);
+            this.groupBox3.Controls.Add(label3);
+            this.groupBox3.Controls.Add(this.tbSumaSeleccion);
+            this.groupBox3.Controls.Add(label5);
+            this.groupBox3.Controls.Add(this.tbRecuentoSeleccion);
+            this.groupBox3.Location = new System.Drawing.Point(11, 314);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(476, 50);
+            this.groupBox3.TabIndex = 71;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Selección";
+            // 
+            // tbPromedioSeleccion
+            // 
+            this.tbPromedioSeleccion.Location = new System.Drawing.Point(370, 18);
+            this.tbPromedioSeleccion.Name = "tbPromedioSeleccion";
+            this.tbPromedioSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbPromedioSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbPromedioSeleccion.Size = new System.Drawing.Size(86, 20);
+            this.tbPromedioSeleccion.TabIndex = 28;
+            // 
+            // tbSumaSeleccion
+            // 
+            this.tbSumaSeleccion.Location = new System.Drawing.Point(180, 18);
+            this.tbSumaSeleccion.Name = "tbSumaSeleccion";
+            this.tbSumaSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbSumaSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbSumaSeleccion.Size = new System.Drawing.Size(100, 20);
+            this.tbSumaSeleccion.TabIndex = 26;
+            // 
+            // tbRecuentoSeleccion
+            // 
+            this.tbRecuentoSeleccion.Location = new System.Drawing.Point(82, 18);
+            this.tbRecuentoSeleccion.Name = "tbRecuentoSeleccion";
+            this.tbRecuentoSeleccion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tbRecuentoSeleccion.Properties.Appearance.Options.UseFont = true;
+            this.tbRecuentoSeleccion.Size = new System.Drawing.Size(50, 20);
+            this.tbRecuentoSeleccion.TabIndex = 24;
             // 
             // tbFacturaCompra
             // 
@@ -1072,7 +1190,7 @@
             this.observacionesProveedoresGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.Observaciones,
             this.btnEliminar});
-            this.observacionesProveedoresGridControl.Size = new System.Drawing.Size(494, 131);
+            this.observacionesProveedoresGridControl.Size = new System.Drawing.Size(494, 85);
             this.observacionesProveedoresGridControl.TabIndex = 18;
             this.observacionesProveedoresGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1658,6 +1776,11 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPromedioSeleccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSumaSeleccion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRecuentoSeleccion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFacturaCompra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSinAlbaran.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFacturaRecibida.Properties)).EndInit();
@@ -1825,6 +1948,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFacturaCompra;
         private DevExpress.XtraGrid.Columns.GridColumn colIdProducto;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit UMProductos;
+        private DevExpress.XtraGrid.Columns.GridColumn colImporte;
+        private DevExpress.XtraGrid.Columns.GridColumn colModificaImporteCompra;
+        private DevExpress.XtraGrid.Columns.GridColumn colUtilizado;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private DevExpress.XtraEditors.TextEdit tbPromedioSeleccion;
+        private DevExpress.XtraEditors.TextEdit tbSumaSeleccion;
+        private DevExpress.XtraEditors.TextEdit tbRecuentoSeleccion;
 
     }
 }

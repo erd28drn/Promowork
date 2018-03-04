@@ -31,19 +31,19 @@ namespace Promowork
            
             Thread.CurrentThread.CurrentUICulture = new  CultureInfo("es-ES");
             
-            //try
-            //{
+            try
+            {
                 Application.Run(new EntradaSistema ());
                 if (VariablesGlobales.nIdEmpresaActual != 0 && VariablesGlobales.nIdUsuarioActual != 0 && VariablesGlobales.nAnoActual != 0 && VariablesGlobales.nMesActual != 0)
                 {
-                    Application.Run(new rptParametrosSinAlbaran ());
+                    Application.Run(new Principal ());
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Errores sin Gestionar");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Errores sin Gestionar");
 
-            //}
+            }
         }
     }
 }

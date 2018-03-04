@@ -36,10 +36,10 @@
             System.Windows.Forms.Label licObraPresupLabel;
             System.Windows.Forms.Label idClienteLabel1;
             System.Windows.Forms.Label idObraLabel1;
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             System.Windows.Forms.Label certificacionAFacturarLabel;
             System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPresupuestoTabla));
@@ -202,6 +202,8 @@
             this.presupSubTableAdapter = new Promowork.DatosPresupuestosTableAdapters.PresupSubTableAdapter();
             this.queriesAccesos1 = new Promowork.DatosAccesosTableAdapters.QueriesAccesos();
             this.queriesPresupuestos1 = new Promowork.DatosPresupuestosTableAdapters.QueriesPresupuestos();
+            this.presupSubCantidadBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presupSubCantidadTableAdapter = new Promowork.DatosPresupuestosTableAdapters.PresupSubCantidadTableAdapter();
             numPresupLabel = new System.Windows.Forms.Label();
             nomPresupLabel = new System.Windows.Forms.Label();
             desPresupLabel = new System.Windows.Forms.Label();
@@ -253,6 +255,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.presupDetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.presupSubBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presupSubCantidadBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // numPresupLabel
@@ -630,7 +633,7 @@
             // 
             this.aFacturarDet.AutoHeight = false;
             this.aFacturarDet.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Partida terminada", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Partida terminada", null, null, true)});
             this.aFacturarDet.DisplayFormat.FormatString = "N3";
             this.aFacturarDet.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.aFacturarDet.EditFormat.FormatString = "N3";
@@ -770,14 +773,14 @@
             // 
             this.presupCapGridControl.DataSource = this.presupCapBindingSource;
             this.presupCapGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.LevelTemplate = this.gridView3;
-            gridLevelNode2.LevelTemplate = this.gridView4;
-            gridLevelNode2.RelationName = "FK_PresupSub_PresupDet";
-            gridLevelNode1.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            gridLevelNode1.RelationName = "FK_PresupDet_PresupCap";
+            gridLevelNode3.LevelTemplate = this.gridView3;
+            gridLevelNode4.LevelTemplate = this.gridView4;
+            gridLevelNode4.RelationName = "FK_PresupSub_PresupDet";
+            gridLevelNode3.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode4});
+            gridLevelNode3.RelationName = "FK_PresupDet_PresupCap";
             this.presupCapGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode3});
             this.presupCapGridControl.Location = new System.Drawing.Point(0, 26);
             this.presupCapGridControl.MainView = this.gridView2;
             this.presupCapGridControl.Name = "presupCapGridControl";
@@ -1122,7 +1125,7 @@
             // 
             this.aFacturarSub.AutoHeight = false;
             this.aFacturarSub.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Partida terminada", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "Partida terminada", null, null, true)});
             this.aFacturarSub.DisplayFormat.FormatString = "N3";
             this.aFacturarSub.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.aFacturarSub.EditFormat.FormatString = "N3";
@@ -2336,6 +2339,15 @@
             // 
             this.presupSubTableAdapter.ClearBeforeFill = true;
             // 
+            // presupSubCantidadBindingSource
+            // 
+            this.presupSubCantidadBindingSource.DataMember = "PresupSubCantidad";
+            this.presupSubCantidadBindingSource.DataSource = this.datosPresupuestos;
+            // 
+            // presupSubCantidadTableAdapter
+            // 
+            this.presupSubCantidadTableAdapter.ClearBeforeFill = true;
+            // 
             // frmPresupuestoTabla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2394,6 +2406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presupDetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presupSubBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presupSubCantidadBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2560,5 +2573,7 @@
         private System.Windows.Forms.ToolStripButton btGenerarPartidas;
         private DevExpress.XtraEditors.SpinEdit spnUltCertificacion;
         private DevExpress.XtraGrid.Columns.GridColumn colCantInf;
+        private System.Windows.Forms.BindingSource presupSubCantidadBindingSource;
+        private DatosPresupuestosTableAdapters.PresupSubCantidadTableAdapter presupSubCantidadTableAdapter;
     }
 }

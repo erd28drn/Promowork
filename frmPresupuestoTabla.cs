@@ -294,7 +294,7 @@ namespace Promowork
         {
             DevExpress.XtraGrid.Views.Grid.GridView viewSub = sender as DevExpress.XtraGrid.Views.Grid.GridView;
 
-            if (e.Column == viewSub.Columns["Cantidad"] /*|| e.Column == viewSub.Columns["Precio"] */|| e.Column == viewSub.Columns["CantExtra"] || e.Column == viewSub.Columns["aFacturar"])
+            if (e.Column == viewSub.Columns["Cantidad"] || e.Column == viewSub.Columns["Precio"] || e.Column == viewSub.Columns["CantExtra"] || e.Column == viewSub.Columns["aFacturar"])
             {
                 DevExpress.XtraGrid.Views.Grid.GridView viewDet = viewSub.ParentView as DevExpress.XtraGrid.Views.Grid.GridView;
                 DevExpress.XtraGrid.Views.Grid.GridView viewCap = viewDet.ParentView as DevExpress.XtraGrid.Views.Grid.GridView;
@@ -332,11 +332,36 @@ namespace Promowork
             }
         }
 
+        private bool TieneSubdetalle(int detalle)
+        {
+            presupSubBindingSource.Filter = "IdPresupDet="+detalle.ToString();
+
+            double cantidad=0;
+            double cantidadExtra=0;
+            double aFacturar=0;
+            double precio=0;
+
+            foreach (DataRowView sub in presupSubBindingSource)
+            {
+                double.TryParse(sub["Cantidad"].ToString(), out cantidad);
+                double.TryParse(sub["Precio"].ToString(), out precio);
+                double.TryParse(sub["CantExtra"].ToString(), out cantidadExtra);
+                double.TryParse(sub["aFacturar"].ToString(), out aFacturar);
+
+                if (cantidad + precio + cantidadExtra + aFacturar > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void gridView3_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             DevExpress.XtraGrid.Views.Grid.GridView viewDet = sender as DevExpress.XtraGrid.Views.Grid.GridView;
 
-            DevExpress.XtraGrid.Views.Grid.GridView viewSub = viewDet.GetDetailView(e.RowHandle, 0) as DevExpress.XtraGrid.Views.Grid.GridView;
+            //DevExpress.XtraGrid.Views.Grid.GridView viewSub = viewDet.GetDetailView(e.RowHandle, 0) as DevExpress.XtraGrid.Views.Grid.GridView;
 
 
             if (e.Column == viewDet.Columns["Cantidad"] || e.Column == viewDet.Columns["Precio"] || e.Column == viewDet.Columns["CantExtra"] || e.Column == viewDet.Columns["aFacturar"])
@@ -374,56 +399,57 @@ namespace Promowork
 
         private void gridView3_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            //DevExpress.XtraGrid.Views.Grid.GridView viewDet = sender as DevExpress.XtraGrid.Views.Grid.GridView;
+            DevExpress.XtraGrid.Views.Grid.GridView viewDet = sender as DevExpress.XtraGrid.Views.Grid.GridView;
 
-            //////DevExpress.XtraGrid.Views.Grid.GridView viewSub = viewDet.GetDetailView(e.RowHandle, 0) as DevExpress.XtraGrid.Views.Grid.GridView;
-            
-            //if (e.Column == viewDet.Columns["Cantidad"] || e.Column == viewDet.Columns["Precio"] || e.Column == viewDet.Columns["CantExtra"] || e.Column == viewDet.Columns["aFacturar"])
-            //{
-            //    if (viewDet.IsMasterRowEmpty(e.RowHandle) == false)
-            //    {
-                    
+            ////DevExpress.XtraGrid.Views.Grid.GridView viewSub = viewDet.GetDetailView(e.RowHandle, 0) as DevExpress.XtraGrid.Views.Grid.GridView;
 
-
-
-                ////////////     //var subValido = false;
-                ////////////     //for (int i = 0; i < viewSub1.RowCount; i++)
-                ////////////     //{
-                ////////////     //    var aaaa = viewSub1.GetDataRow(i);
-                ////////////     //    var bbb = viewSub1.GetDataRow(i).Table;
-
-                         
-
-                ////////////     //    viewSub.FocusedRowHandle = i;
-                ////////////     //    var cantidad = viewSub1.GetFocusedRowCellValue("Cantidad");
-                ////////////     //    var cantExtra = viewSub1.GetFocusedRowCellValue("CantExtra");
-                ////////////     //    var precio = viewSub1.GetFocusedRowCellValue("Precio");
-                ////////////     //    var aFacturar = viewSub1.GetFocusedRowCellValue("aFacturar");
+            if (e.Column == viewDet.Columns["Cantidad"] || e.Column == viewDet.Columns["Precio"] || e.Column == viewDet.Columns["CantExtra"] || e.Column == viewDet.Columns["aFacturar"])
+            {
+                int idDetalle = (int)viewDet.GetFocusedRowCellValue("IdPresupDet");
+                if (TieneSubdetalle(idDetalle))
+                {
 
 
-                ////////////     //    //if ((cantidad+cantExtra)*precio!=0 || aFacturar!=0)
-                ////////////     //    //{
-                ////////////     //    //    subValido = true;
-                ////////////     //    //    break;
-                ////////////     //    //}
-                ////////////     //}
 
-                ////////////     //if (subValido)
-                ////////////     //{
 
-                         //MessageBox.Show("No puede haber Cantidad, Precio, Cantidad Extra o A Facturar en un Detalle que contiene Subdetalle", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //////////     //var subValido = false;
+                    //////////     //for (int i = 0; i < viewSub1.RowCount; i++)
+                    //////////     //{
+                    //////////     //    var aaaa = viewSub1.GetDataRow(i);
+                    //////////     //    var bbb = viewSub1.GetDataRow(i).Table;
 
-                         //var ccc = viewDet.GetFocusedRowCellValue("Cantidad");
 
-                         //viewDet.SetFocusedRowCellValue("Cantidad", null);
-                         //viewDet.SetFocusedRowCellValue("Precio", null);
-                         //viewDet.SetFocusedRowCellValue("CantExtra", null);
-                         //viewDet.SetFocusedRowCellValue("aFacturar", null);
-                ////////////    /// }
 
-            //    }
-               
-            //}
+                    //////////     //    viewSub.FocusedRowHandle = i;
+                    //////////     //    var cantidad = viewSub1.GetFocusedRowCellValue("Cantidad");
+                    //////////     //    var cantExtra = viewSub1.GetFocusedRowCellValue("CantExtra");
+                    //////////     //    var precio = viewSub1.GetFocusedRowCellValue("Precio");
+                    //////////     //    var aFacturar = viewSub1.GetFocusedRowCellValue("aFacturar");
+
+
+                    //////////     //    //if ((cantidad+cantExtra)*precio!=0 || aFacturar!=0)
+                    //////////     //    //{
+                    //////////     //    //    subValido = true;
+                    //////////     //    //    break;
+                    //////////     //    //}
+                    //////////     //}
+
+                    //////////     //if (subValido)
+                    //////////     //{
+
+                    MessageBox.Show("No puede haber Cantidad, Precio, Cantidad Extra o A Facturar en un Detalle que contiene Subdetalle", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //var ccc = viewDet.GetFocusedRowCellValue("Cantidad");
+
+                    viewDet.SetFocusedRowCellValue("Cantidad", null);
+                    viewDet.SetFocusedRowCellValue("Precio", null);
+                    viewDet.SetFocusedRowCellValue("CantExtra", null);
+                    viewDet.SetFocusedRowCellValue("aFacturar", null);
+                    //////////    /// }
+
+                }
+
+            }
         }
 
         private void gridView2_InitNewRow(object sender, InitNewRowEventArgs e)
@@ -724,8 +750,5 @@ namespace Promowork
             CargarPresupuesto();
         }
 
-    
-       
-        
     }
 }

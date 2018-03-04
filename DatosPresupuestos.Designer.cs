@@ -64,6 +64,8 @@ namespace Promowork {
         
         private vDetallesHorasMaterialesDataTable tablevDetallesHorasMateriales;
         
+        private PresupSubCantidadDataTable tablePresupSubCantidad;
+        
         private global::System.Data.DataRelation relationFK_PresupCap_PresupCab;
         
         private global::System.Data.DataRelation relationFK_PresupCab_Obras;
@@ -117,6 +119,12 @@ namespace Promowork {
         private global::System.Data.DataRelation relationFK_FacturasDetDirecta_FacturasCab1;
         
         private global::System.Data.DataRelation relationFK_FacturasCab_PresupCab1;
+        
+        private global::System.Data.DataRelation relationFK_FacturasDet_PresupSub2;
+        
+        private global::System.Data.DataRelation relationFK_PresupSub_PresupDet4;
+        
+        private global::System.Data.DataRelation relationFK_PresupSub_PresupDet5;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -205,6 +213,9 @@ namespace Promowork {
                 }
                 if ((ds.Tables["vDetallesHorasMateriales"] != null)) {
                     base.Tables.Add(new vDetallesHorasMaterialesDataTable(ds.Tables["vDetallesHorasMateriales"]));
+                }
+                if ((ds.Tables["PresupSubCantidad"] != null)) {
+                    base.Tables.Add(new PresupSubCantidadDataTable(ds.Tables["PresupSubCantidad"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -426,6 +437,16 @@ namespace Promowork {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PresupSubCantidadDataTable PresupSubCantidad {
+            get {
+                return this.tablePresupSubCantidad;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -550,6 +571,9 @@ namespace Promowork {
                 }
                 if ((ds.Tables["vDetallesHorasMateriales"] != null)) {
                     base.Tables.Add(new vDetallesHorasMaterialesDataTable(ds.Tables["vDetallesHorasMateriales"]));
+                }
+                if ((ds.Tables["PresupSubCantidad"] != null)) {
+                    base.Tables.Add(new PresupSubCantidadDataTable(ds.Tables["PresupSubCantidad"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -704,6 +728,12 @@ namespace Promowork {
                     this.tablevDetallesHorasMateriales.InitVars();
                 }
             }
+            this.tablePresupSubCantidad = ((PresupSubCantidadDataTable)(base.Tables["PresupSubCantidad"]));
+            if ((initTable == true)) {
+                if ((this.tablePresupSubCantidad != null)) {
+                    this.tablePresupSubCantidad.InitVars();
+                }
+            }
             this.relationFK_PresupCap_PresupCab = this.Relations["FK_PresupCap_PresupCab"];
             this.relationFK_PresupCab_Obras = this.Relations["FK_PresupCab_Obras"];
             this.relationFK_Presupuestos_Clientes = this.Relations["FK_Presupuestos_Clientes"];
@@ -731,6 +761,9 @@ namespace Promowork {
             this.relationFK_FacturasDet_FacturasCab1 = this.Relations["FK_FacturasDet_FacturasCab1"];
             this.relationFK_FacturasDetDirecta_FacturasCab1 = this.Relations["FK_FacturasDetDirecta_FacturasCab1"];
             this.relationFK_FacturasCab_PresupCab1 = this.Relations["FK_FacturasCab_PresupCab1"];
+            this.relationFK_FacturasDet_PresupSub2 = this.Relations["FK_FacturasDet_PresupSub2"];
+            this.relationFK_PresupSub_PresupDet4 = this.Relations["FK_PresupSub_PresupDet4"];
+            this.relationFK_PresupSub_PresupDet5 = this.Relations["FK_PresupSub_PresupDet5"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -781,6 +814,8 @@ namespace Promowork {
             base.Tables.Add(this.tablevComprasDirectasPresupuesto);
             this.tablevDetallesHorasMateriales = new vDetallesHorasMaterialesDataTable();
             base.Tables.Add(this.tablevDetallesHorasMateriales);
+            this.tablePresupSubCantidad = new PresupSubCantidadDataTable();
+            base.Tables.Add(this.tablePresupSubCantidad);
             this.relationFK_PresupCap_PresupCab = new global::System.Data.DataRelation("FK_PresupCap_PresupCab", new global::System.Data.DataColumn[] {
                         this.tablePresupCab.IdPresupCabColumn}, new global::System.Data.DataColumn[] {
                         this.tablePresupCap.IdPresupCabColumn}, false);
@@ -889,6 +924,18 @@ namespace Promowork {
                         this.tablePresupCab.IdPresupCabColumn}, new global::System.Data.DataColumn[] {
                         this.tablevComprasDirectasPresupuesto.IdPresupColumn}, false);
             this.Relations.Add(this.relationFK_FacturasCab_PresupCab1);
+            this.relationFK_FacturasDet_PresupSub2 = new global::System.Data.DataRelation("FK_FacturasDet_PresupSub2", new global::System.Data.DataColumn[] {
+                        this.tablePresupSubCantidad.IdPresupSubColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFacturasDet.IdPresupSubColumn}, false);
+            this.Relations.Add(this.relationFK_FacturasDet_PresupSub2);
+            this.relationFK_PresupSub_PresupDet4 = new global::System.Data.DataRelation("FK_PresupSub_PresupDet4", new global::System.Data.DataColumn[] {
+                        this.tablePresupDet.IdPresupDetColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePresupSubCantidad.IdPresupDetColumn}, false);
+            this.Relations.Add(this.relationFK_PresupSub_PresupDet4);
+            this.relationFK_PresupSub_PresupDet5 = new global::System.Data.DataRelation("FK_PresupSub_PresupDet5", new global::System.Data.DataColumn[] {
+                        this.tableDetalles.IdPresupDetColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePresupSubCantidad.IdPresupDetColumn}, false);
+            this.Relations.Add(this.relationFK_PresupSub_PresupDet5);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,6 +1060,12 @@ namespace Promowork {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializePresupSubCantidad() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1125,6 +1178,9 @@ namespace Promowork {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void vDetallesHorasMaterialesRowChangeEventHandler(object sender, vDetallesHorasMaterialesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void PresupSubCantidadRowChangeEventHandler(object sender, PresupSubCantidadRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -9461,6 +9517,394 @@ namespace Promowork {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PresupSubCantidadDataTable : global::System.Data.TypedTableBase<PresupSubCantidadRow> {
+            
+            private global::System.Data.DataColumn columnIdPresupSub;
+            
+            private global::System.Data.DataColumn columnIdPresupDet;
+            
+            private global::System.Data.DataColumn columnIdPresupCab;
+            
+            private global::System.Data.DataColumn columnCantidad;
+            
+            private global::System.Data.DataColumn columnCantExtra;
+            
+            private global::System.Data.DataColumn columnPrecio;
+            
+            private global::System.Data.DataColumn columnIdPresupCap;
+            
+            private global::System.Data.DataColumn columnaFacturar;
+            
+            private global::System.Data.DataColumn columnDescPrecio;
+            
+            private global::System.Data.DataColumn columnCantInf;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadDataTable() {
+                this.TableName = "PresupSubCantidad";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PresupSubCantidadDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected PresupSubCantidadDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdPresupSubColumn {
+                get {
+                    return this.columnIdPresupSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdPresupDetColumn {
+                get {
+                    return this.columnIdPresupDet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdPresupCabColumn {
+                get {
+                    return this.columnIdPresupCab;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CantidadColumn {
+                get {
+                    return this.columnCantidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CantExtraColumn {
+                get {
+                    return this.columnCantExtra;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PrecioColumn {
+                get {
+                    return this.columnPrecio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdPresupCapColumn {
+                get {
+                    return this.columnIdPresupCap;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn aFacturarColumn {
+                get {
+                    return this.columnaFacturar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescPrecioColumn {
+                get {
+                    return this.columnDescPrecio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CantInfColumn {
+                get {
+                    return this.columnCantInf;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow this[int index] {
+                get {
+                    return ((PresupSubCantidadRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PresupSubCantidadRowChangeEventHandler PresupSubCantidadRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PresupSubCantidadRowChangeEventHandler PresupSubCantidadRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PresupSubCantidadRowChangeEventHandler PresupSubCantidadRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PresupSubCantidadRowChangeEventHandler PresupSubCantidadRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddPresupSubCantidadRow(PresupSubCantidadRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow AddPresupSubCantidadRow(PresupDetRow parentPresupDetRowByFK_PresupSub_PresupDet4, int IdPresupCab, decimal Cantidad, decimal CantExtra, decimal Precio, int IdPresupCap, decimal aFacturar, decimal DescPrecio, decimal CantInf) {
+                PresupSubCantidadRow rowPresupSubCantidadRow = ((PresupSubCantidadRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        IdPresupCab,
+                        Cantidad,
+                        CantExtra,
+                        Precio,
+                        IdPresupCap,
+                        aFacturar,
+                        DescPrecio,
+                        CantInf};
+                if ((parentPresupDetRowByFK_PresupSub_PresupDet4 != null)) {
+                    columnValuesArray[1] = parentPresupDetRowByFK_PresupSub_PresupDet4[0];
+                }
+                rowPresupSubCantidadRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPresupSubCantidadRow);
+                return rowPresupSubCantidadRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PresupSubCantidadDataTable cln = ((PresupSubCantidadDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PresupSubCantidadDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdPresupSub = base.Columns["IdPresupSub"];
+                this.columnIdPresupDet = base.Columns["IdPresupDet"];
+                this.columnIdPresupCab = base.Columns["IdPresupCab"];
+                this.columnCantidad = base.Columns["Cantidad"];
+                this.columnCantExtra = base.Columns["CantExtra"];
+                this.columnPrecio = base.Columns["Precio"];
+                this.columnIdPresupCap = base.Columns["IdPresupCap"];
+                this.columnaFacturar = base.Columns["aFacturar"];
+                this.columnDescPrecio = base.Columns["DescPrecio"];
+                this.columnCantInf = base.Columns["CantInf"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdPresupSub = new global::System.Data.DataColumn("IdPresupSub", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPresupSub);
+                this.columnIdPresupDet = new global::System.Data.DataColumn("IdPresupDet", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPresupDet);
+                this.columnIdPresupCab = new global::System.Data.DataColumn("IdPresupCab", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPresupCab);
+                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCantidad);
+                this.columnCantExtra = new global::System.Data.DataColumn("CantExtra", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCantExtra);
+                this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrecio);
+                this.columnIdPresupCap = new global::System.Data.DataColumn("IdPresupCap", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPresupCap);
+                this.columnaFacturar = new global::System.Data.DataColumn("aFacturar", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaFacturar);
+                this.columnDescPrecio = new global::System.Data.DataColumn("DescPrecio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescPrecio);
+                this.columnCantInf = new global::System.Data.DataColumn("CantInf", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCantInf);
+                this.columnIdPresupSub.AutoIncrement = true;
+                this.columnIdPresupSub.AutoIncrementSeed = -1;
+                this.columnIdPresupSub.AutoIncrementStep = -1;
+                this.columnIdPresupSub.AllowDBNull = false;
+                this.columnIdPresupSub.ReadOnly = true;
+                this.columnIdPresupDet.AllowDBNull = false;
+                this.columnCantidad.ReadOnly = true;
+                this.columnCantExtra.ReadOnly = true;
+                this.columnPrecio.ReadOnly = true;
+                this.columnaFacturar.ReadOnly = true;
+                this.columnDescPrecio.ReadOnly = true;
+                this.columnCantInf.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow NewPresupSubCantidadRow() {
+                return ((PresupSubCantidadRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PresupSubCantidadRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PresupSubCantidadRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PresupSubCantidadRowChanged != null)) {
+                    this.PresupSubCantidadRowChanged(this, new PresupSubCantidadRowChangeEvent(((PresupSubCantidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PresupSubCantidadRowChanging != null)) {
+                    this.PresupSubCantidadRowChanging(this, new PresupSubCantidadRowChangeEvent(((PresupSubCantidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PresupSubCantidadRowDeleted != null)) {
+                    this.PresupSubCantidadRowDeleted(this, new PresupSubCantidadRowChangeEvent(((PresupSubCantidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PresupSubCantidadRowDeleting != null)) {
+                    this.PresupSubCantidadRowDeleting(this, new PresupSubCantidadRowChangeEvent(((PresupSubCantidadRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovePresupSubCantidadRow(PresupSubCantidadRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DatosPresupuestos ds = new DatosPresupuestos();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PresupSubCantidadDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class PresupCabRow : global::System.Data.DataRow {
@@ -11824,6 +12268,17 @@ namespace Promowork {
                     return ((SubdetallesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PresupSub_PresupDet2"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow[] GetPresupSubCantidadRows() {
+                if ((this.Table.ChildRelations["FK_PresupSub_PresupDet4"] == null)) {
+                    return new PresupSubCantidadRow[0];
+                }
+                else {
+                    return ((PresupSubCantidadRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PresupSub_PresupDet4"])));
+                }
+            }
         }
         
         /// <summary>
@@ -13067,6 +13522,17 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow PresupSubCantidadRow {
+                get {
+                    return ((PresupSubCantidadRow)(this.GetParentRow(this.Table.ParentRelations["FK_FacturasDet_PresupSub2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_FacturasDet_PresupSub2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdPresupCapNull() {
                 return this.IsNull(this.tableFacturasDet.IdPresupCapColumn);
             }
@@ -13878,6 +14344,17 @@ namespace Promowork {
                 }
                 else {
                     return ((SubdetallesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PresupSub_PresupDet3"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow[] GetPresupSubCantidadRows() {
+                if ((this.Table.ChildRelations["FK_PresupSub_PresupDet5"] == null)) {
+                    return new PresupSubCantidadRow[0];
+                }
+                else {
+                    return ((PresupSubCantidadRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PresupSub_PresupDet5"])));
                 }
             }
         }
@@ -16095,6 +16572,300 @@ namespace Promowork {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PresupSubCantidadRow : global::System.Data.DataRow {
+            
+            private PresupSubCantidadDataTable tablePresupSubCantidad;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PresupSubCantidadRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePresupSubCantidad = ((PresupSubCantidadDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdPresupSub {
+                get {
+                    return ((int)(this[this.tablePresupSubCantidad.IdPresupSubColumn]));
+                }
+                set {
+                    this[this.tablePresupSubCantidad.IdPresupSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdPresupDet {
+                get {
+                    return ((int)(this[this.tablePresupSubCantidad.IdPresupDetColumn]));
+                }
+                set {
+                    this[this.tablePresupSubCantidad.IdPresupDetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdPresupCab {
+                get {
+                    try {
+                        return ((int)(this[this.tablePresupSubCantidad.IdPresupCabColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdPresupCab\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.IdPresupCabColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Cantidad {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.CantidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cantidad\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.CantidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CantExtra {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.CantExtraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantExtra\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.CantExtraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Precio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.PrecioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Precio\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.PrecioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdPresupCap {
+                get {
+                    try {
+                        return ((int)(this[this.tablePresupSubCantidad.IdPresupCapColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdPresupCap\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.IdPresupCapColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal aFacturar {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.aFacturarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'aFacturar\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.aFacturarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal DescPrecio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.DescPrecioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DescPrecio\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.DescPrecioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CantInf {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupSubCantidad.CantInfColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantInf\' de la tabla \'PresupSubCantidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupSubCantidad.CantInfColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupDetRow PresupDetRow {
+                get {
+                    return ((PresupDetRow)(this.GetParentRow(this.Table.ParentRelations["FK_PresupSub_PresupDet4"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PresupSub_PresupDet4"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DetallesRow DetallesRow {
+                get {
+                    return ((DetallesRow)(this.GetParentRow(this.Table.ParentRelations["FK_PresupSub_PresupDet5"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PresupSub_PresupDet5"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdPresupCabNull() {
+                return this.IsNull(this.tablePresupSubCantidad.IdPresupCabColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdPresupCabNull() {
+                this[this.tablePresupSubCantidad.IdPresupCabColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCantidadNull() {
+                return this.IsNull(this.tablePresupSubCantidad.CantidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCantidadNull() {
+                this[this.tablePresupSubCantidad.CantidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCantExtraNull() {
+                return this.IsNull(this.tablePresupSubCantidad.CantExtraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCantExtraNull() {
+                this[this.tablePresupSubCantidad.CantExtraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPrecioNull() {
+                return this.IsNull(this.tablePresupSubCantidad.PrecioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPrecioNull() {
+                this[this.tablePresupSubCantidad.PrecioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdPresupCapNull() {
+                return this.IsNull(this.tablePresupSubCantidad.IdPresupCapColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdPresupCapNull() {
+                this[this.tablePresupSubCantidad.IdPresupCapColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsaFacturarNull() {
+                return this.IsNull(this.tablePresupSubCantidad.aFacturarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetaFacturarNull() {
+                this[this.tablePresupSubCantidad.aFacturarColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescPrecioNull() {
+                return this.IsNull(this.tablePresupSubCantidad.DescPrecioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescPrecioNull() {
+                this[this.tablePresupSubCantidad.DescPrecioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCantInfNull() {
+                return this.IsNull(this.tablePresupSubCantidad.CantInfColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCantInfNull() {
+                this[this.tablePresupSubCantidad.CantInfColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FacturasDetRow[] GetFacturasDetRows() {
+                if ((this.Table.ChildRelations["FK_FacturasDet_PresupSub2"] == null)) {
+                    return new FacturasDetRow[0];
+                }
+                else {
+                    return ((FacturasDetRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FacturasDet_PresupSub2"])));
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -16760,6 +17531,40 @@ namespace Promowork {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public vDetallesHorasMaterialesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class PresupSubCantidadRowChangeEvent : global::System.EventArgs {
+            
+            private PresupSubCantidadRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRowChangeEvent(PresupSubCantidadRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PresupSubCantidadRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -25425,6 +26230,188 @@ WHERE        (FacturasCab.IdPresup = @Presupuesto)";
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(nIdFactCab));
             DatosPresupuestos.vDetallesHorasMaterialesDataTable dataTable = new DatosPresupuestos.vDetallesHorasMaterialesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class PresupSubCantidadTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public PresupSubCantidadTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "PresupSubCantidad";
+            tableMapping.ColumnMappings.Add("IdPresupSub", "IdPresupSub");
+            tableMapping.ColumnMappings.Add("IdPresupDet", "IdPresupDet");
+            tableMapping.ColumnMappings.Add("IdPresupCab", "IdPresupCab");
+            tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
+            tableMapping.ColumnMappings.Add("CantExtra", "CantExtra");
+            tableMapping.ColumnMappings.Add("Precio", "Precio");
+            tableMapping.ColumnMappings.Add("IdPresupCap", "IdPresupCap");
+            tableMapping.ColumnMappings.Add("aFacturar", "aFacturar");
+            tableMapping.ColumnMappings.Add("DescPrecio", "DescPrecio");
+            tableMapping.ColumnMappings.Add("CantInf", "CantInf");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Promowork.Properties.Settings.Default.Promowork_dataConnection;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        IdPresupSub, IdPresupDet, IdPresupCab, ISNULL(Cantidad, 0) AS Cantidad, ISNULL(CantExtra, 0) AS CantExtra, ISNULL(Precio, 0) AS Precio, IdPresupCap, ISNULL(aFacturar, 0) AS aFacturar, ISNULL(DescPrecio, 0) 
+                         AS DescPrecio, ISNULL(CantInf, 0) AS CantInf
+FROM            PresupSub
+WHERE        (IdPresupDet = @detalle)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@detalle", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdPresupDet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int FillByDetalle(DatosPresupuestos.PresupSubCantidadDataTable dataTable, int detalle) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(detalle));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DatosPresupuestos.PresupSubCantidadDataTable GetDataByDetalle(int detalle) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(detalle));
+            DatosPresupuestos.PresupSubCantidadDataTable dataTable = new DatosPresupuestos.PresupSubCantidadDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

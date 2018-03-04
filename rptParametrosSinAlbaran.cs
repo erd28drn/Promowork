@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Promowork
 {
@@ -36,46 +37,71 @@ namespace Promowork
             dateTimePicker2.MinDate = FechaIni;
             
             this.EmpresasActualTableAdapter.FillByEmpresa(this.Promowork_dataDataSet.EmpresasActual, VariablesGlobales.nIdEmpresaActual);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabControl1.TabPages[1];
+            Cursor.Current = Cursors.WaitCursor;
+            tabControl1.SelectedTab = tabControl1.TabPages[0];
             this.vAlbaranesTableAdapter.FillBySinAlbaran(this.DatosReportesNuevos.vAlbaranes, VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin);
             this.reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             FechaIni = dateTimePicker1.Value;
             dateTimePicker2.MinDate = FechaIni;
+            button3.Enabled = false;
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             FechaFin = dateTimePicker2.Value;
+            button3.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             tabControl1.SelectedTab = tabControl1.TabPages[1];
 
-            proveedores = proveedoresSinAlbaranTableAdapter.GetData(VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin)
-                .Select(p => new ResumenEnvioCorreos { Marca= Utilidades.ValidarEmail(p.EmailProveedor),
-                                                       Proveedor = p.DesProveedor, 
-                                                       Email = p.EmailProveedor, 
-                                                       Valido = Utilidades.ValidarEmail(p.EmailProveedor)});
-            gridControl1.DataSource = proveedores;
+            try
+            {
+                this.vAlbaranesTableAdapter.FillBySinAlbaran(this.DatosReportesNuevos.vAlbaranes, VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin);
+                proveedores = proveedoresSinAlbaranTableAdapter.GetData(VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin)
+                    .Select(p => new ResumenEnvioCorreos
+                    {
+                        IdProveedor = p.IdProveedor,
+                        Marca = Utilidades.ValidarEmail(p.EmailProveedor),
+                        Proveedor = p.DesProveedor,
+                        Email = p.EmailProveedor,
+                        Valido = Utilidades.ValidarEmail(p.EmailProveedor),
+                        Enviado = null
+                    }).ToList();
+                gridControl1.DataSource = proveedores;
+                button3.Enabled = true;
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                button3.Enabled = false;
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Error al validar los proveedores." + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
        
         }
 
         private class ResumenEnvioCorreos
         {
+            public int IdProveedor { get; set; }
             public bool Marca { get; set; }
             public string Proveedor {get; set;}
             public string Email {get; set;}
             public bool Valido {get; set;}
-            public bool Enviado {get; set;}
+            public bool? Enviado {get; set;}
+            public string Respuesta { get; set; }
         }
 
         private void fillbySinAlbaranToolStripButton_Click(object sender, EventArgs e)
@@ -100,19 +126,67 @@ namespace Promowork
 
         private void button3_Click(object sender, EventArgs e)
         {
-            proveedores = (IEnumerable<ResumenEnvioCorreos>)gridControl1.DataSource;
+            Cursor.Current = Cursors.WaitCursor;
+            var cuerpoCorreo = "<p>Con el fin de poder verificar sus facturas, rogamos nos envien copia de los siguientes albaranes a compras@promowork.es " +
+                                "Ya que NO disponemos de ellos. Para ello, será necesario que conste la firma y el DNI de la persona autorizada que realizó " +
+                                "la retirada del material o autorizó la escarga.</p>" +
+                                "<p>Sin otro particular,<br>" +
+                                "Le saludo muy cordialmente,</p>" +
+                                "<p>Oscar Urpi<br>" +
+                                "Dpto.Compras.</p>";
 
-            foreach (var proveedor in proveedores.Where(P => P.Valido))
+            foreach (var proveedor in proveedores.Where(p => p.Marca))
             {
-                Utilidades.EnviaCorreo();
+                if (!Directory.Exists("ENVIADOS/SIN ALBARAN"))
+                {
+                    Directory.CreateDirectory("ENVIADOS/SIN ALBARAN");
+                }
+                vAlbaranesBindingSource.Filter = "IdProveedor=" + proveedor.IdProveedor.ToString();
+                this.reportViewer1.RefreshReport();
+                string nombreFichero= "ENVIADOS/SIN ALBARAN/"+/*DateTime.Today.ToString("yyyyMMdd")+*/"ALBARANES PENDIENTES " + proveedor.Proveedor;
+                var RespuestaCrearFichero= Utilidades.ExportarReporte(reportViewer1, nombreFichero, ".PDF", "PDF");
+                if (RespuestaCrearFichero == string.Empty)
+                {
+                    List<string> destinatarios = new List<string>();
+                    destinatarios.Add("compras@promowork.es");
+                    
+                    
+                    //List<string> destinatarios= proveedor.Email.Split(';').ToList();
+                    string asunto= "Albaranes Pendientes";
+                    List<string> adjuntos= new List<string>();
+                    adjuntos.Add(nombreFichero+ ".PDF");
+                    string respuestaEnviarCorreo= Utilidades.EnviaCorreo(destinatarios, asunto, adjuntos, cuerpoCorreo);
+                    proveedor.Enviado = true;
+                    proveedor.Respuesta = respuestaEnviarCorreo;
+                }
+                else
+                {
+                    proveedor.Enviado = false;
+                    proveedor.Respuesta = RespuestaCrearFichero;
+                }
+            }
+            gridControl1.RefreshDataSource();
+
+            vAlbaranesBindingSource.Filter = "";
+            this.reportViewer1.RefreshReport();
+
+            Cursor.Current = Cursors.Default;
+
+        }
+
+        private void gridView1_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            var valido = (bool)gridView1.GetFocusedRowCellValue(colValido);
+            if (!valido)
+            {
+                e.Cancel = true;
             }
         }
 
-        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void GenerarReporteProveedor(int idProvedor)
         {
-            this.Validate();
-            gridView1.CloseEditor();
-            gridView1.UpdateCurrentRow();
+            
+            this.reportViewer1.RefreshReport();
         }
 
     }
