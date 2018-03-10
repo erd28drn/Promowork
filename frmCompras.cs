@@ -174,8 +174,6 @@ namespace Promowork
         {
             try
             {
-                
-
                 this.Validate();
                 this.comprasCabBindingSource.EndEdit();
                 this.comprasDetBindingSource.EndEdit();
@@ -685,5 +683,55 @@ namespace Promowork
             this.vCuentasBancosTableAdapter.FillByEmpresaCtaEmpresa(this.promowork_dataDataSet.vCuentasBancos, VariablesGlobales.nIdEmpresaActual, true);
         }
 
+        private void gvComprasDet_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            gvComprasDet.UpdateTotalSummary();
+
+            CalculaTotalCompra();
+        }
+
+        private void gvPagos_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            gvPagos.UpdateTotalSummary();
+            
+            CalculaTotalPagado();
+        }
+
+        private void CalculaTotalCompra()
+        {
+            if (comprasCabBindingSource != null && comprasCabBindingSource.Count > 0)
+            {
+                var totales = ServicioComprasPoveedores.CalculaTotalesCompra(comprasDetBindingSource);
+
+                if (totales != null)
+                {
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpBase"] = totales.ImporteBase;
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpIva"] = totales.ImporteIVA;
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpIRPF"] = totales.ImporteIRPF;
+                    ((DataRowView)comprasCabBindingSource.Current)["Importe"] = totales.ImporteTotal;
+                }
+            }
+        }
+
+        private void CalculaTotalPagado()
+        {
+            if (comprasCabBindingSource != null && comprasCabBindingSource.Count > 0)
+            {
+                decimal importePagado = ServicioComprasPoveedores.CalculaTotalPagado(pagosBindingSource);
+                ((DataRowView)comprasCabBindingSource.Current)["ImpPagado"] = importePagado;
+            }
+        }
+
+        private void gvComprasDet_RowCountChanged(object sender, EventArgs e)
+        {
+            CalculaTotalCompra();
+        }
+
+        private void gvPagos_RowCountChanged(object sender, EventArgs e)
+        {
+            CalculaTotalPagado();
+        }
+
+       
     }
 }

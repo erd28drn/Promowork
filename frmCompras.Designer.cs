@@ -42,11 +42,11 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label fechaPagoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompras));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.vComprasProveedoresGridControl = new DevExpress.XtraGrid.GridControl();
@@ -111,6 +111,9 @@
             this.toolStripLabel10 = new System.Windows.Forms.ToolStripLabel();
             this.tbcbObras = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbVcto = new System.Windows.Forms.RadioButton();
             this.rbPrevision = new System.Windows.Forms.RadioButton();
@@ -174,7 +177,7 @@
             this.colImpIvaCompraDet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIVACompraDet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colImpIRPF1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colImpIRPFCompraDet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObsCompra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colColor2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -277,9 +280,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.vImportarAlbaranesDetTableAdapter = new Promowork.DatosAlbaranesTableAdapters.vImportarAlbaranesDetTableAdapter();
             this.pagosTableAdapter = new Promowork.Promowork_dataDataSetTableAdapters.PagosTableAdapter();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             idProveedorLabel = new System.Windows.Forms.Label();
             facturaLabel = new System.Windows.Forms.Label();
             fechaFacturaLabel = new System.Windows.Forms.Label();
@@ -864,6 +864,7 @@
             this.colImporte.Caption = "Importe Total";
             this.colImporte.FieldName = "Importe";
             this.colImporte.Name = "colImporte";
+            this.colImporte.OptionsColumn.ReadOnly = true;
             this.colImporte.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:c2}")});
             this.colImporte.Visible = true;
@@ -1110,6 +1111,36 @@
             this.toolStripButton1.ToolTipText = "Quitar filtro de Obra";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // button6
+            // 
+            this.button6.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
+            this.button6.Location = new System.Drawing.Point(482, 40);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(22, 21);
+            this.button6.TabIndex = 97;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
+            this.button5.Location = new System.Drawing.Point(482, 222);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(22, 21);
+            this.button5.TabIndex = 96;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
+            this.button2.Location = new System.Drawing.Point(482, 196);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(22, 21);
+            this.button2.TabIndex = 95;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rbVcto);
@@ -1256,6 +1287,8 @@
             this.gvPagos.Name = "gvPagos";
             this.gvPagos.OptionsView.ShowFooter = true;
             this.gvPagos.OptionsView.ShowGroupPanel = false;
+            this.gvPagos.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvPagos_CellValueChanged);
+            this.gvPagos.RowCountChanged += new System.EventHandler(this.gvPagos_RowCountChanged);
             // 
             // colIdCompra1
             // 
@@ -1573,9 +1606,9 @@
             this.tbCopiaFactura.Location = new System.Drawing.Point(137, 248);
             this.tbCopiaFactura.Name = "tbCopiaFactura";
             this.tbCopiaFactura.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject10, "Adjuntar copia de la Factura", null, null, true),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::Promowork.Properties.Resources.View_icon, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, "Ver copia de factura.", null, null, true),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject14, "Eliminar copia de factura adjunta.", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject6, "Adjuntar copia de la Factura", null, null, true),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::Promowork.Properties.Resources.View_icon, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject7, "Ver copia de factura.", null, null, true),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject8, "Eliminar copia de factura adjunta.", null, null, true)});
             this.tbCopiaFactura.Size = new System.Drawing.Size(370, 22);
             this.tbCopiaFactura.TabIndex = 15;
             this.tbCopiaFactura.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.tbCopiaFactura_ButtonPressed);
@@ -1651,7 +1684,7 @@
             this.colImpIvaCompraDet,
             this.colIVACompraDet,
             this.colTotal,
-            this.colImpIRPF1,
+            this.colImpIRPFCompraDet,
             this.colObsCompra,
             this.colColor2});
             this.gvComprasDet.GridControl = this.comprasDetGridControl;
@@ -1659,6 +1692,8 @@
             this.gvComprasDet.OptionsView.ShowFooter = true;
             this.gvComprasDet.OptionsView.ShowGroupPanel = false;
             this.gvComprasDet.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvComprasDet_FocusedRowChanged);
+            this.gvComprasDet.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvComprasDet_CellValueChanged);
+            this.gvComprasDet.RowCountChanged += new System.EventHandler(this.gvComprasDet_RowCountChanged);
             // 
             // colIdDetCompra
             // 
@@ -1758,18 +1793,18 @@
             this.colTotal.VisibleIndex = 5;
             this.colTotal.Width = 112;
             // 
-            // colImpIRPF1
+            // colImpIRPFCompraDet
             // 
-            this.colImpIRPF1.AppearanceHeader.Options.UseTextOptions = true;
-            this.colImpIRPF1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colImpIRPF1.Caption = "Imp. IRPF";
-            this.colImpIRPF1.FieldName = "ImpIRPF";
-            this.colImpIRPF1.Name = "colImpIRPF1";
-            this.colImpIRPF1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.colImpIRPFCompraDet.AppearanceHeader.Options.UseTextOptions = true;
+            this.colImpIRPFCompraDet.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colImpIRPFCompraDet.Caption = "Imp. IRPF";
+            this.colImpIRPFCompraDet.FieldName = "ImpIRPF";
+            this.colImpIRPFCompraDet.Name = "colImpIRPFCompraDet";
+            this.colImpIRPFCompraDet.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ImpIRPF", "{0:c2}")});
-            this.colImpIRPF1.Visible = true;
-            this.colImpIRPF1.VisibleIndex = 4;
-            this.colImpIRPF1.Width = 97;
+            this.colImpIRPFCompraDet.Visible = true;
+            this.colImpIRPFCompraDet.VisibleIndex = 4;
+            this.colImpIRPFCompraDet.Width = 97;
             // 
             // colObsCompra
             // 
@@ -1975,7 +2010,7 @@
             // 
             this.QuitarAsociacion.AutoHeight = false;
             this.QuitarAsociacion.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject8, "Quitar Asociación", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Quitar Asociación", null, null, true)});
             this.QuitarAsociacion.Name = "QuitarAsociacion";
             this.QuitarAsociacion.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.QuitarAsociacion.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.QuitarAsociacion_ButtonPressed);
@@ -2335,7 +2370,7 @@
             // 
             this.AsociarAFactura.AutoHeight = false;
             this.AsociarAFactura.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject11, "Asociar a Factura", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Asociar a Factura", null, null, true)});
             this.AsociarAFactura.Name = "AsociarAFactura";
             this.AsociarAFactura.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.AsociarAFactura.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AsociarAFactura_ButtonPressed);
@@ -2528,7 +2563,7 @@
             // toolStripLabel5
             // 
             this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(49, 22);
+            this.toolStripLabel5.Size = new System.Drawing.Size(48, 22);
             this.toolStripLabel5.Text = "IVA (%):";
             // 
             // tbIVA
@@ -2693,36 +2728,6 @@
             // pagosTableAdapter
             // 
             this.pagosTableAdapter.ClearBeforeFill = true;
-            // 
-            // button6
-            // 
-            this.button6.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
-            this.button6.Location = new System.Drawing.Point(482, 40);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(22, 21);
-            this.button6.TabIndex = 97;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
-            this.button5.Location = new System.Drawing.Point(482, 222);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(22, 21);
-            this.button5.TabIndex = 96;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button2
-            // 
-            this.button2.Image = global::Promowork.Properties.Resources.bindingNavigatorAddNewItem_Image;
-            this.button2.Location = new System.Drawing.Point(482, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(22, 21);
-            this.button2.TabIndex = 95;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmCompras
             // 
@@ -2898,7 +2903,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colImpIvaCompraDet;
         private DevExpress.XtraGrid.Columns.GridColumn colIVACompraDet;
         private DevExpress.XtraGrid.Columns.GridColumn colTotal;
-        private DevExpress.XtraGrid.Columns.GridColumn colImpIRPF1;
+        private DevExpress.XtraGrid.Columns.GridColumn colImpIRPFCompraDet;
         private DevExpress.XtraGrid.Columns.GridColumn colObsCompra;
         private DevExpress.XtraGrid.Columns.GridColumn colColor2;
         private System.Windows.Forms.BindingSource comprasCabBindingSource;

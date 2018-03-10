@@ -45,15 +45,15 @@
             System.Windows.Forms.Label observLabel;
             System.Windows.Forms.Label fechaPagoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Compras));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comprasCabBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.comprasCabBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -624,10 +624,10 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ImpBase";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle37.Format = "N2";
+            dataGridViewCellStyle37.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle37;
             this.dataGridViewTextBoxColumn1.HeaderText = "Importe Base";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -636,10 +636,10 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "ImpIVA";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle38.Format = "N2";
+            dataGridViewCellStyle38.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle38;
             this.dataGridViewTextBoxColumn4.HeaderText = "Importe IVA";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -648,8 +648,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "ImpIRPF";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle39;
             this.dataGridViewTextBoxColumn2.HeaderText = "Importe IRPF";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -658,10 +658,10 @@
             // Importe
             // 
             this.Importe.DataPropertyName = "Importe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Importe.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle40.Format = "N2";
+            dataGridViewCellStyle40.NullValue = null;
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle40;
             this.Importe.HeaderText = "Total Factura";
             this.Importe.Name = "Importe";
             this.Importe.ReadOnly = true;
@@ -1374,7 +1374,10 @@
             this.pagosDataGridView.RowHeadersWidth = 25;
             this.pagosDataGridView.Size = new System.Drawing.Size(543, 148);
             this.pagosDataGridView.TabIndex = 14;
+            this.pagosDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagosDataGridView_CellEndEdit);
             this.pagosDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.pagosDataGridView_DataError);
+            this.pagosDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.pagosDataGridView_RowsAdded);
+            this.pagosDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.pagosDataGridView_RowsRemoved);
             // 
             // fechaDataGridViewTextBoxColumn
             // 
@@ -1425,9 +1428,9 @@
             // importeDataGridViewTextBoxColumn
             // 
             this.importeDataGridViewTextBoxColumn.DataPropertyName = "Importe";
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.importeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle41.Format = "N2";
+            dataGridViewCellStyle41.NullValue = null;
+            this.importeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle41;
             this.importeDataGridViewTextBoxColumn.HeaderText = "Importe";
             this.importeDataGridViewTextBoxColumn.Name = "importeDataGridViewTextBoxColumn";
             this.importeDataGridViewTextBoxColumn.Width = 80;
@@ -1461,6 +1464,8 @@
             this.comprasDetDataGridView.TabIndex = 96;
             this.comprasDetDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.comprasDetDataGridView_CellEndEdit);
             this.comprasDetDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.comprasDetDataGridView_DataError);
+            this.comprasDetDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.comprasDetDataGridView_RowsAdded);
+            this.comprasDetDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.comprasDetDataGridView_RowsRemoved);
             // 
             // IdObra
             // 
@@ -1484,9 +1489,9 @@
             // ImpBase
             // 
             this.ImpBase.DataPropertyName = "ImpBase";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.ImpBase.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle42.Format = "N2";
+            dataGridViewCellStyle42.NullValue = null;
+            this.ImpBase.DefaultCellStyle = dataGridViewCellStyle42;
             this.ImpBase.HeaderText = "Imp.Base";
             this.ImpBase.Name = "ImpBase";
             this.ImpBase.Width = 80;
@@ -1494,9 +1499,9 @@
             // ImpIva
             // 
             this.ImpIva.DataPropertyName = "ImpIva";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.ImpIva.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle43.Format = "N2";
+            dataGridViewCellStyle43.NullValue = null;
+            this.ImpIva.DefaultCellStyle = dataGridViewCellStyle43;
             this.ImpIva.HeaderText = "Imp.IVA";
             this.ImpIva.Name = "ImpIva";
             this.ImpIva.Width = 70;
@@ -1504,9 +1509,9 @@
             // IVA
             // 
             this.IVA.DataPropertyName = "IVA";
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.IVA.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle44.Format = "N0";
+            dataGridViewCellStyle44.NullValue = null;
+            this.IVA.DefaultCellStyle = dataGridViewCellStyle44;
             this.IVA.HeaderText = "IVA";
             this.IVA.Name = "IVA";
             this.IVA.ReadOnly = true;
@@ -1522,9 +1527,9 @@
             // Total
             // 
             this.Total.DataPropertyName = "Total";
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle45.Format = "N2";
+            dataGridViewCellStyle45.NullValue = null;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle45;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             // 

@@ -230,6 +230,7 @@
     <Compile Include="rptParametrosSinAlbaran.Designer.cs">
       <DependentUpon>rptParametrosSinAlbaran.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServicioCompraPoveedores.cs" />
     <Compile Include="Utilidades.cs" />
     <Compile Include="DatosAccesos.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -227,6 +227,7 @@ namespace Promowork
 
            object ImpBase = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpBase)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object ImpIVA = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIVA)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
+           object ImpIRPF = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIRPF)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object TotalPagado = promowork_dataDataSet.Pagos.Compute("Sum(Importe)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
 
            if (Convert.IsDBNull(ImpBase))
@@ -239,12 +240,17 @@ namespace Promowork
                ImpIVA = 0;
            }
 
+           if (Convert.IsDBNull(ImpIRPF))
+           {
+               ImpIRPF = 0;
+           }
+
            if (Convert.IsDBNull(TotalPagado))
            {
                TotalPagado = 0;
            }
 
-           decimal nTotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA);
+           decimal nTotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA) - Convert.ToDecimal(ImpIRPF);
            decimal nTotalPagado = Convert.ToDecimal(TotalPagado);
 
            textBox1.Text = Convert.ToString(nTotalFactura);
@@ -335,6 +341,7 @@ namespace Promowork
 
            object ImpBase = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpBase)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object ImpIVA = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIVA)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
+           object ImpIRPF = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIRPF)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object TotalPagado = promowork_dataDataSet.Pagos.Compute("Sum(Importe)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
 
            if (Convert.IsDBNull(ImpBase))
@@ -347,12 +354,17 @@ namespace Promowork
                ImpIVA = 0;
            }
 
+           if (Convert.IsDBNull(ImpIRPF))
+           {
+               ImpIRPF = 0;
+           }
+
            if (Convert.IsDBNull(TotalPagado))
            {
                TotalPagado = 0;
            }
 
-           decimal nTotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA);
+           decimal nTotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA) - Convert.ToDecimal(ImpIRPF);
            decimal nTotalPagado = Convert.ToDecimal(TotalPagado);
 
            textBox1.Text = Convert.ToString(Math.Round(nTotalFactura,2));
@@ -429,11 +441,17 @@ namespace Promowork
 
            object ImpBase = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpBase)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object ImpIVA = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIVA)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
+           object ImpIRPF = promowork_dataDataSet.ComprasDet.Compute("Sum(ImpIRPF)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
            object TotalPagado = promowork_dataDataSet.Pagos.Compute("Sum(Importe)", "IdCompra=" + Convert.ToString(CompraActual["IdCompra"]));
           
            if (Convert.IsDBNull(ImpBase))
            {
                ImpBase = 0;
+           }
+
+           if (Convert.IsDBNull(ImpIRPF))
+           {
+               ImpIRPF = 0;
            }
 
            if (Convert.IsDBNull(ImpIVA))
@@ -446,7 +464,7 @@ namespace Promowork
                TotalPagado = 0;
            }
 
-           decimal TotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA);
+           decimal TotalFactura = Convert.ToDecimal(ImpBase) + Convert.ToDecimal(ImpIVA) - Convert.ToDecimal(ImpIRPF);
 
            
            // pagosBindingSource.AddNew();
@@ -538,6 +556,8 @@ namespace Promowork
                 }
             }
             catch { }
+            CalculaTotalCompra();
+
         }
 
         private void fechaFacturaDateTimePicker_Validated(object sender, EventArgs e)
@@ -755,6 +775,56 @@ namespace Promowork
         private void pagosDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             MessageBox.Show("Error de Formato");
+        }
+
+        private void CalculaTotalCompra()
+        {
+            if (comprasCabBindingSource != null && comprasCabBindingSource.Count > 0)
+            {
+                var totales = ServicioComprasPoveedores.CalculaTotalesCompra(comprasDetBindingSource);
+
+                if (totales != null)
+                {
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpBase"] = totales.ImporteBase;
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpIva"] = totales.ImporteIVA;
+                    ((DataRowView)comprasCabBindingSource.Current)["ImpIRPF"] = totales.ImporteIRPF;
+                    ((DataRowView)comprasCabBindingSource.Current)["Importe"] = totales.ImporteTotal;
+                }
+            }
+        }
+
+        private void CalculaTotalPagado()
+        {
+            if (comprasCabBindingSource != null && comprasCabBindingSource.Count > 0)
+            {
+                decimal importePagado = ServicioComprasPoveedores.CalculaTotalPagado(pagosBindingSource);
+                ((DataRowView)comprasCabBindingSource.Current)["ImpPagado"] = importePagado;
+            }
+        }
+
+        private void comprasDetDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalculaTotalCompra();
+        }
+
+        private void comprasDetDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalculaTotalCompra();
+        }
+
+        private void pagosDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CalculaTotalPagado();
+        }
+
+        private void pagosDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CalculaTotalPagado();
+        }
+
+        private void pagosDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalculaTotalPagado();
         }
 
 
