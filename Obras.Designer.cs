@@ -46,6 +46,9 @@
             System.Windows.Forms.Label serieObraLabel;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label totalPresupuestoLabel;
+            System.Windows.Forms.Label totalExtrasLabel;
+            System.Windows.Forms.Label pendienteCobroLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Obras));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,9 +58,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
-            System.Windows.Forms.Label totalPresupuestoLabel;
-            System.Windows.Forms.Label totalExtrasLabel;
-            System.Windows.Forms.Label pendienteCobroLabel;
             this.colIdPoblacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.poblacionesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -214,11 +214,17 @@
             this.DirObra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumMatriz = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalPresupuesto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalExtras = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPendienteCobro = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivaObra = new System.Windows.Forms.CheckBox();
             this.txtMatriz = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.noAgendaCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.pendienteCobroSpinEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.totalExtrasSpinEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.totalPresupuestoSpinEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.chkNoAgenda = new DevExpress.XtraEditors.CheckEdit();
             this.chkGGenerales = new System.Windows.Forms.CheckBox();
             this.bindingNavigator3 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
@@ -226,12 +232,7 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.totalPresupuestoSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.totalExtrasSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.pendienteCobroSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.colPendienteCobro = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalPresupuesto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalExtras = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkEnviarProveedores = new DevExpress.XtraEditors.CheckEdit();
             idClienteLabel = new System.Windows.Forms.Label();
             numObraLabel = new System.Windows.Forms.Label();
             desObraLabel = new System.Windows.Forms.Label();
@@ -289,12 +290,13 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.noAgendaCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendienteCobroSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalExtrasSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalPresupuestoSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoAgenda.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator3)).BeginInit();
             this.bindingNavigator3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.totalPresupuestoSpinEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.totalExtrasSpinEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pendienteCobroSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEnviarProveedores.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // idClienteLabel
@@ -515,6 +517,33 @@
             // 
             this.clientesBindingSource.DataMember = "Clientes";
             this.clientesBindingSource.DataSource = this.promowork_dataDataSet;
+            // 
+            // totalPresupuestoLabel
+            // 
+            totalPresupuestoLabel.AutoSize = true;
+            totalPresupuestoLabel.Location = new System.Drawing.Point(17, 218);
+            totalPresupuestoLabel.Name = "totalPresupuestoLabel";
+            totalPresupuestoLabel.Size = new System.Drawing.Size(69, 13);
+            totalPresupuestoLabel.TabIndex = 77;
+            totalPresupuestoLabel.Text = "Presupuesto:";
+            // 
+            // totalExtrasLabel
+            // 
+            totalExtrasLabel.AutoSize = true;
+            totalExtrasLabel.Location = new System.Drawing.Point(46, 244);
+            totalExtrasLabel.Name = "totalExtrasLabel";
+            totalExtrasLabel.Size = new System.Drawing.Size(39, 13);
+            totalExtrasLabel.TabIndex = 78;
+            totalExtrasLabel.Text = "Extras:";
+            // 
+            // pendienteCobroLabel
+            // 
+            pendienteCobroLabel.AutoSize = true;
+            pendienteCobroLabel.Location = new System.Drawing.Point(27, 270);
+            pendienteCobroLabel.Name = "pendienteCobroLabel";
+            pendienteCobroLabel.Size = new System.Drawing.Size(58, 13);
+            pendienteCobroLabel.TabIndex = 79;
+            pendienteCobroLabel.Text = "Pendiente:";
             // 
             // obrasBindingSource
             // 
@@ -1892,6 +1921,21 @@
             this.colNumMatriz.VisibleIndex = 0;
             this.colNumMatriz.Width = 52;
             // 
+            // colTotalPresupuesto
+            // 
+            this.colTotalPresupuesto.FieldName = "TotalPresupuesto";
+            this.colTotalPresupuesto.Name = "colTotalPresupuesto";
+            // 
+            // colTotalExtras
+            // 
+            this.colTotalExtras.FieldName = "TotalExtras";
+            this.colTotalExtras.Name = "colTotalExtras";
+            // 
+            // colPendienteCobro
+            // 
+            this.colPendienteCobro.FieldName = "PendienteCobro";
+            this.colPendienteCobro.Name = "colPendienteCobro";
+            // 
             // chkActivaObra
             // 
             this.chkActivaObra.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.obrasBindingSource, "ActivaObra", true));
@@ -1947,13 +1991,14 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(this.chkEnviarProveedores);
             this.splitContainer2.Panel2.Controls.Add(pendienteCobroLabel);
             this.splitContainer2.Panel2.Controls.Add(this.pendienteCobroSpinEdit);
             this.splitContainer2.Panel2.Controls.Add(totalExtrasLabel);
             this.splitContainer2.Panel2.Controls.Add(this.totalExtrasSpinEdit);
             this.splitContainer2.Panel2.Controls.Add(totalPresupuestoLabel);
             this.splitContainer2.Panel2.Controls.Add(this.totalPresupuestoSpinEdit);
-            this.splitContainer2.Panel2.Controls.Add(this.noAgendaCheckEdit);
+            this.splitContainer2.Panel2.Controls.Add(this.chkNoAgenda);
             this.splitContainer2.Panel2.Controls.Add(this.chkGGenerales);
             this.splitContainer2.Panel2.Controls.Add(label5);
             this.splitContainer2.Panel2.Controls.Add(this.bindingNavigator2);
@@ -2000,14 +2045,92 @@
             this.splitContainer2.SplitterDistance = 709;
             this.splitContainer2.TabIndex = 0;
             // 
-            // noAgendaCheckEdit
+            // pendienteCobroSpinEdit
             // 
-            this.noAgendaCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "NoAgenda", true));
-            this.noAgendaCheckEdit.Location = new System.Drawing.Point(401, 215);
-            this.noAgendaCheckEdit.Name = "noAgendaCheckEdit";
-            this.noAgendaCheckEdit.Properties.Caption = "No Incluir en Agenda";
-            this.noAgendaCheckEdit.Size = new System.Drawing.Size(140, 19);
-            this.noAgendaCheckEdit.TabIndex = 77;
+            this.pendienteCobroSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "PendienteCobro", true));
+            this.pendienteCobroSpinEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.pendienteCobroSpinEdit.Location = new System.Drawing.Point(91, 267);
+            this.pendienteCobroSpinEdit.Name = "pendienteCobroSpinEdit";
+            this.pendienteCobroSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.pendienteCobroSpinEdit.Properties.Appearance.Options.UseFont = true;
+            this.pendienteCobroSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.pendienteCobroSpinEdit.Properties.DisplayFormat.FormatString = "N2";
+            this.pendienteCobroSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.pendienteCobroSpinEdit.Properties.EditFormat.FormatString = "N2";
+            this.pendienteCobroSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.pendienteCobroSpinEdit.Properties.MaxValue = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            131072});
+            this.pendienteCobroSpinEdit.Size = new System.Drawing.Size(100, 20);
+            this.pendienteCobroSpinEdit.TabIndex = 80;
+            // 
+            // totalExtrasSpinEdit
+            // 
+            this.totalExtrasSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "TotalExtras", true));
+            this.totalExtrasSpinEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.totalExtrasSpinEdit.Location = new System.Drawing.Point(91, 241);
+            this.totalExtrasSpinEdit.Name = "totalExtrasSpinEdit";
+            this.totalExtrasSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.totalExtrasSpinEdit.Properties.Appearance.Options.UseFont = true;
+            this.totalExtrasSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.totalExtrasSpinEdit.Properties.DisplayFormat.FormatString = "N2";
+            this.totalExtrasSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.totalExtrasSpinEdit.Properties.EditFormat.FormatString = "N2";
+            this.totalExtrasSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.totalExtrasSpinEdit.Properties.MaxValue = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            131072});
+            this.totalExtrasSpinEdit.Size = new System.Drawing.Size(100, 20);
+            this.totalExtrasSpinEdit.TabIndex = 79;
+            // 
+            // totalPresupuestoSpinEdit
+            // 
+            this.totalPresupuestoSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "TotalPresupuesto", true));
+            this.totalPresupuestoSpinEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.totalPresupuestoSpinEdit.Location = new System.Drawing.Point(92, 215);
+            this.totalPresupuestoSpinEdit.Name = "totalPresupuestoSpinEdit";
+            this.totalPresupuestoSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.totalPresupuestoSpinEdit.Properties.Appearance.Options.UseFont = true;
+            this.totalPresupuestoSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.totalPresupuestoSpinEdit.Properties.DisplayFormat.FormatString = "N2";
+            this.totalPresupuestoSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.totalPresupuestoSpinEdit.Properties.EditFormat.FormatString = "N2";
+            this.totalPresupuestoSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.totalPresupuestoSpinEdit.Properties.MaxValue = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            131072});
+            this.totalPresupuestoSpinEdit.Size = new System.Drawing.Size(100, 20);
+            this.totalPresupuestoSpinEdit.TabIndex = 78;
+            // 
+            // chkNoAgenda
+            // 
+            this.chkNoAgenda.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "NoAgenda", true));
+            this.chkNoAgenda.Location = new System.Drawing.Point(401, 215);
+            this.chkNoAgenda.Name = "chkNoAgenda";
+            this.chkNoAgenda.Properties.Caption = "No Incluir en Agenda";
+            this.chkNoAgenda.Size = new System.Drawing.Size(140, 19);
+            this.chkNoAgenda.TabIndex = 77;
             // 
             // chkGGenerales
             // 
@@ -2076,125 +2199,15 @@
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
             // 
-            // totalPresupuestoLabel
+            // chkEnviarProveedores
             // 
-            totalPresupuestoLabel.AutoSize = true;
-            totalPresupuestoLabel.Location = new System.Drawing.Point(17, 218);
-            totalPresupuestoLabel.Name = "totalPresupuestoLabel";
-            totalPresupuestoLabel.Size = new System.Drawing.Size(69, 13);
-            totalPresupuestoLabel.TabIndex = 77;
-            totalPresupuestoLabel.Text = "Presupuesto:";
-            // 
-            // totalPresupuestoSpinEdit
-            // 
-            this.totalPresupuestoSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "TotalPresupuesto", true));
-            this.totalPresupuestoSpinEdit.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.totalPresupuestoSpinEdit.Location = new System.Drawing.Point(92, 215);
-            this.totalPresupuestoSpinEdit.Name = "totalPresupuestoSpinEdit";
-            this.totalPresupuestoSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.totalPresupuestoSpinEdit.Properties.Appearance.Options.UseFont = true;
-            this.totalPresupuestoSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.totalPresupuestoSpinEdit.Properties.DisplayFormat.FormatString = "N2";
-            this.totalPresupuestoSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.totalPresupuestoSpinEdit.Properties.EditFormat.FormatString = "N2";
-            this.totalPresupuestoSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.totalPresupuestoSpinEdit.Properties.MaxValue = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.totalPresupuestoSpinEdit.Size = new System.Drawing.Size(100, 20);
-            this.totalPresupuestoSpinEdit.TabIndex = 78;
-            // 
-            // totalExtrasLabel
-            // 
-            totalExtrasLabel.AutoSize = true;
-            totalExtrasLabel.Location = new System.Drawing.Point(46, 244);
-            totalExtrasLabel.Name = "totalExtrasLabel";
-            totalExtrasLabel.Size = new System.Drawing.Size(39, 13);
-            totalExtrasLabel.TabIndex = 78;
-            totalExtrasLabel.Text = "Extras:";
-            // 
-            // totalExtrasSpinEdit
-            // 
-            this.totalExtrasSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "TotalExtras", true));
-            this.totalExtrasSpinEdit.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.totalExtrasSpinEdit.Location = new System.Drawing.Point(91, 241);
-            this.totalExtrasSpinEdit.Name = "totalExtrasSpinEdit";
-            this.totalExtrasSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.totalExtrasSpinEdit.Properties.Appearance.Options.UseFont = true;
-            this.totalExtrasSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.totalExtrasSpinEdit.Properties.DisplayFormat.FormatString = "N2";
-            this.totalExtrasSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.totalExtrasSpinEdit.Properties.EditFormat.FormatString = "N2";
-            this.totalExtrasSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.totalExtrasSpinEdit.Properties.MaxValue = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.totalExtrasSpinEdit.Size = new System.Drawing.Size(100, 20);
-            this.totalExtrasSpinEdit.TabIndex = 79;
-            // 
-            // pendienteCobroLabel
-            // 
-            pendienteCobroLabel.AutoSize = true;
-            pendienteCobroLabel.Location = new System.Drawing.Point(27, 270);
-            pendienteCobroLabel.Name = "pendienteCobroLabel";
-            pendienteCobroLabel.Size = new System.Drawing.Size(58, 13);
-            pendienteCobroLabel.TabIndex = 79;
-            pendienteCobroLabel.Text = "Pendiente:";
-            // 
-            // pendienteCobroSpinEdit
-            // 
-            this.pendienteCobroSpinEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "PendienteCobro", true));
-            this.pendienteCobroSpinEdit.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.pendienteCobroSpinEdit.Location = new System.Drawing.Point(91, 267);
-            this.pendienteCobroSpinEdit.Name = "pendienteCobroSpinEdit";
-            this.pendienteCobroSpinEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.pendienteCobroSpinEdit.Properties.Appearance.Options.UseFont = true;
-            this.pendienteCobroSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.pendienteCobroSpinEdit.Properties.DisplayFormat.FormatString = "N2";
-            this.pendienteCobroSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.pendienteCobroSpinEdit.Properties.EditFormat.FormatString = "N2";
-            this.pendienteCobroSpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.pendienteCobroSpinEdit.Properties.MaxValue = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.pendienteCobroSpinEdit.Size = new System.Drawing.Size(100, 20);
-            this.pendienteCobroSpinEdit.TabIndex = 80;
-            // 
-            // colPendienteCobro
-            // 
-            this.colPendienteCobro.FieldName = "PendienteCobro";
-            this.colPendienteCobro.Name = "colPendienteCobro";
-            // 
-            // colTotalPresupuesto
-            // 
-            this.colTotalPresupuesto.FieldName = "TotalPresupuesto";
-            this.colTotalPresupuesto.Name = "colTotalPresupuesto";
-            // 
-            // colTotalExtras
-            // 
-            this.colTotalExtras.FieldName = "TotalExtras";
-            this.colTotalExtras.Name = "colTotalExtras";
+            this.chkEnviarProveedores.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.obrasBindingSource, "EnviarProveedores", true));
+            this.chkEnviarProveedores.Location = new System.Drawing.Point(402, 238);
+            this.chkEnviarProveedores.Name = "chkEnviarProveedores";
+            this.chkEnviarProveedores.Properties.Caption = "Enviar a Proveedores";
+            this.chkEnviarProveedores.Size = new System.Drawing.Size(129, 19);
+            this.chkEnviarProveedores.TabIndex = 81;
+            this.chkEnviarProveedores.ToolTip = "Si se selecciona, se incluirá en el listado para enviar a proveedores";
             // 
             // Obras
             // 
@@ -2253,13 +2266,14 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.noAgendaCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendienteCobroSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalExtrasSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalPresupuestoSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoAgenda.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator3)).EndInit();
             this.bindingNavigator3.ResumeLayout(false);
             this.bindingNavigator3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.totalPresupuestoSpinEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.totalExtrasSpinEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pendienteCobroSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEnviarProveedores.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2435,12 +2449,13 @@
         private System.Windows.Forms.ToolStripButton toolStripButton17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.CheckBox chkGGenerales;
-        private DevExpress.XtraEditors.CheckEdit noAgendaCheckEdit;
+        private DevExpress.XtraEditors.CheckEdit chkNoAgenda;
         private DevExpress.XtraEditors.SpinEdit pendienteCobroSpinEdit;
         private DevExpress.XtraEditors.SpinEdit totalExtrasSpinEdit;
         private DevExpress.XtraEditors.SpinEdit totalPresupuestoSpinEdit;
         private DevExpress.XtraGrid.Columns.GridColumn colTotalPresupuesto;
         private DevExpress.XtraGrid.Columns.GridColumn colTotalExtras;
         private DevExpress.XtraGrid.Columns.GridColumn colPendienteCobro;
+        private DevExpress.XtraEditors.CheckEdit chkEnviarProveedores;
     }
 }

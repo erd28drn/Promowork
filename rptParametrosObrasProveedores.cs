@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using Microsoft.Reporting.WinForms;
 
 namespace Promowork
 {
@@ -45,10 +46,26 @@ namespace Promowork
         private void button1_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            tabControl1.SelectedTab = tabControl1.TabPages[0];
-            this.listadoObrasTableAdapter.FillByEmpresa(this.DatosReportesNuevos.ListadoObras, VariablesGlobales.nIdEmpresaActual);
-            this.reportViewer1.RefreshReport();
+            tabControl1.SelectedTab = tabControl1.TabPages[1];
+            CrearReporte();
             Cursor.Current = Cursors.Default;
+        }
+
+        private void CrearReporte()
+        {
+            ReportParameter[] Parametros = new ReportParameter[1];
+            //Establecemos el valor de los parámetros
+
+            //this.ObrasTableAdapter.FillByFechaObra(this.Promowork_dataDataSet.Obras, VariablesGlobales.nIdEmpresaActual);
+            if (obras == null || !obras.Any())
+            {
+                CargarObras();
+            }
+            ObrasBindingSource.DataSource = obras.Where(o => o.Marca).ToList();
+            Parametros[0] = new ReportParameter("Activas", "true");
+            this.reportViewer1.LocalReport.SetParameters(Parametros);
+            this.reportViewer1.LocalReport.EnableExternalImages = true;
+            this.reportViewer1.RefreshReport();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -66,13 +83,20 @@ namespace Promowork
 
         private void button2_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = tabControl1.TabPages[2];
+
+            CargarProveedores();
+
+        }
+
+        private void CargarProveedores()
+        {
             Cursor.Current = Cursors.WaitCursor;
-            tabControl1.SelectedTab = tabControl1.TabPages[1];
 
             try
             {
-                this.listadoObrasTableAdapter.FillByEmpresa(this.DatosReportesNuevos.ListadoObras, VariablesGlobales.nIdEmpresaActual);
-                proveedores = proveedoresSinAlbaranTableAdapter.GetData(VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin)
+                this.ObrasTableAdapter.FillByFechaObra(this.Promowork_dataDataSet.Obras, VariablesGlobales.nIdEmpresaActual);
+                proveedores = proveedoresComprasAlbaranesTableAdapter.GetDataByProveedoresComprasAlbaranes(VariablesGlobales.nIdEmpresaActual, FechaIni, FechaFin)
                     .Select(p => new ResumenEnvioCorreos
                     {
                         IdProveedor = p.IdProveedor,
@@ -92,9 +116,6 @@ namespace Promowork
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Error al validar los proveedores. " + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            MostrarObras();
-       
         }
 
         private class ResumenEnvioCorreos
@@ -131,33 +152,40 @@ namespace Promowork
 
         private void button3_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab = tabControl1.TabPages[2];
             Cursor.Current = Cursors.WaitCursor;
-            var cuerpoCorreo = "<p>Con el fin de poder verificar sus facturas, rogamos nos envien copia de los siguientes albaranes a compras@promowork.es " +
-                                "Ya que NO disponemos de ellos. Para ello, será necesario que conste la firma y el DNI de la persona autorizada que realizó " +
-                                "la retirada del material o autorizó la escarga.</p>" +
-                                "<p>Sin otro particular,<br>" +
-                                "Le saludo muy cordialmente,</p>" +
-                                "<p>Oscar Urpi<br>" +
-                                "Dpto.Compras.</p>";
 
+            CrearReporte();
+
+            var cuerpoCorreo = tbCuerpoCorreo.Text.Replace("\n","<br>");
+                
+                
+                //"<p>Con el fin de poder verificar sus facturas, rogamos nos envien copia de los siguientes albaranes a compras@promowork.es " +
+                //                "Ya que NO disponemos de ellos. Para ello, será necesario que conste la firma y el DNI de la persona autorizada que realizó " +
+                //                "la retirada del material o autorizó la escarga.</p>" +
+                //                "<p>Sin otro particular,<br>" +
+                //                "Le saludo muy cordialmente,</p>" +
+                //                "<p>Oscar Urpi<br>" +
+                //                "Dpto.Compras.</p>";
+
+            
+
+            if (!Directory.Exists("ENVIADOS/OBRAS"))
+            {
+                Directory.CreateDirectory("ENVIADOS/OBRAS");
+            }
+            string nombreFichero = "ENVIADOS/OBRAS/" +/*DateTime.Today.ToString("yyyyMMdd")+*/"LISTADO DE OBRAS ACTIVAS";
+            var RespuestaCrearFichero = Utilidades.ExportarReporte(reportViewer1, nombreFichero, ".PDF", "PDF");
+            
             foreach (var proveedor in proveedores.Where(p => p.Marca))
             {
-                if (!Directory.Exists("ENVIADOS/SIN ALBARAN"))
-                {
-                    Directory.CreateDirectory("ENVIADOS/SIN ALBARAN");
-                }
-                //vAlbaranesBindingSource.Filter = "IdProveedor=" + proveedor.IdProveedor.ToString();
-                this.reportViewer1.RefreshReport();
-                string nombreFichero= "ENVIADOS/SIN ALBARAN/"+/*DateTime.Today.ToString("yyyyMMdd")+*/"ALBARANES PENDIENTES " + proveedor.Proveedor;
-                var RespuestaCrearFichero= Utilidades.ExportarReporte(reportViewer1, nombreFichero, ".PDF", "PDF");
                 if (RespuestaCrearFichero == string.Empty)
                 {
                     List<string> destinatarios = new List<string>();
-                    destinatarios.Add("compras@promowork.es");
-                    
+                    destinatarios.Add("compras@promowork.es");//compras@promowork.es
                     
                     //List<string> destinatarios= proveedor.Email.Split(';').ToList();
-                    string asunto= "Albaranes Pendientes";
+                    string asunto= "Listado de Obras Activas";
                     List<string> adjuntos= new List<string>();
                     adjuntos.Add(nombreFichero+ ".PDF");
                     string respuestaEnviarCorreo= Utilidades.EnviaCorreo(destinatarios, asunto, adjuntos, cuerpoCorreo);
@@ -198,32 +226,38 @@ namespace Promowork
         {
             public int IdObra { get; set; }
             public bool Marca { get; set; }
-            public string Matriz { get; set; }
-            public int Numero { get; set; }
-            public string Descripcion { get; set; }
+            public int? Matriz { get; set; }
+            public int NumObra { get; set; }
+            public string SerieObra { get; set; }
+            public string NumObraStr { get; set; }
+            public string DesObra { get; set; }
+            //public bool EnviarProveedor { get; set; }
             public string NumeroDescripcion { get; set; }
             public string MatrizNumeroDescripcion { get; set; }
         }
 
-        private void MostrarObras()
+        private void CargarObras()
         {
             Cursor.Current = Cursors.WaitCursor;
             //tabControl1.SelectedTab = tabControl1.TabPages[0];
 
             try
             {
-                obras = listadoObrasTableAdapter.GetData(VariablesGlobales.nIdEmpresaActual).Where(o=> o.ActivaObra)
+                obras = ObrasTableAdapter.GetDataBy11(VariablesGlobales.nIdEmpresaActual).OrderBy(o => o.SerieObra).ThenBy(o => o.NumObra)
                     .Select(o => new ObrasEnviar
                     {
                         IdObra = o.IdObra,
-                        Marca = !o.GastosGenereales,
-                        //Matriz = o.NumMatriz.ToString(),
-                        Numero = o.NumObra,
-                        Descripcion = o.DesObra,
+                        Marca = o.EnviarProveedores,
+                        Matriz = ObtenerMatriz(o.NumObraStr),
+                        NumObra= o.NumObra,
+                        SerieObra= o.SerieObra,
+                        NumObraStr = ObtenerObraSM(o.NumObraStr),
+                        DesObra = o.DesObra
+                        //EnviarProveedor=o.EnviarProveedores
                         //NumeroDescripcion= o.ObraSM,
                         //MatrizNumeroDescripcion=o.Obra
                     }).ToList();
-                obrasGridControl.DataSource = obras.OrderBy(o=> o.Numero);
+                obrasGridControl.DataSource = obras;
                 button3.Enabled = true;
                 Cursor.Current = Cursors.Default;
             }
@@ -234,6 +268,37 @@ namespace Promowork
                 MessageBox.Show("Error al cargar las obras. " + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private string ObtenerObraSM(string numObraStr)
+        {
+            var posIniObra = numObraStr.LastIndexOf("-");
+            if (posIniObra > 0)
+            {
+                return numObraStr.Substring(posIniObra+1).Trim();
+            }
+            else
+            {
+                return numObraStr;
+            }
+        }
+        private int? ObtenerMatriz(string numObraStr)
+        {
+            var posIniObra = numObraStr.LastIndexOf("-");
+            if (posIniObra > 0)
+            {
+                return int.Parse(numObraStr.Substring(0, posIniObra));
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        private void btObras_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabControl1.TabPages[0];
+            CargarObras();
+        }
+
+       
     }
 }

@@ -188,8 +188,10 @@ namespace Promowork
            fechaIniObraDateTimePicker.Value = fechaIni;
            fechaFinObraDateTimePicker.Value = fechaFin;
            fechaFinObraDateTimePicker.MinDate = fechaIniObraDateTimePicker.Value;
-           chkActivaObra.CheckState = CheckState.Checked;
-          // chkActivaObra.Checked = true;
+           chkActivaObra.CheckState= CheckState.Checked;
+           chkEnviarProveedores.Checked = true;
+           chkGGenerales.Checked = false;
+           chkNoAgenda.Checked = false;
           // desObraTextBox.Focus();
             toolStripButton8.Enabled=false;
             toolStripButton2.Enabled = false;
@@ -543,9 +545,13 @@ namespace Promowork
 
         private void imprimirToolStripButton_Click(object sender, EventArgs e)
         {
-            RptListadoObras frm = new RptListadoObras();
-            frm.LoadFiltro(checkBox1.Checked);
+            //RptListadoObras frm = new RptListadoObras();
+            //frm.LoadFiltro(checkBox1.Checked);
+            //frm.MdiParent = this.MdiParent;
+            //frm.Show();
+            rptParametrosObrasProveedores frm = new rptParametrosObrasProveedores();
             frm.MdiParent = this.MdiParent;
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
