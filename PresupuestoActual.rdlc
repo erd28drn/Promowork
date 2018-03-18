@@ -168,6 +168,22 @@
           <DataField>Extra2</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="ImporteCap">
+          <DataField>ImporteCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteCab">
+          <DataField>ImporteCab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteCapaFacturar">
+          <DataField>ImporteCapaFacturar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteCabaFacturar">
+          <DataField>ImporteCabaFacturar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>Promowork_dataDataSet</DataSourceName>
@@ -175,7 +191,7 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>Promowork_dataDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USUARIO2\Google Drive\Promowork\Promowork_dataDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\USUARIO\Google Drive\Promowork\Promowork_dataDataSet.xsd</rd:SchemaPath>
         <rd:TableName>PresupuestoActual</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod />
@@ -732,7 +748,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Importe.Value)</Value>
+                              <Value>=Fields!ImporteCab.Value</Value>
                               <Style>
                                 <FontFamily>Franklin Gothic Medium Cond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -1425,7 +1441,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Importe.Value)</Value>
+                              <Value>=Fields!ImporteCap.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00'€';(#,0.00'€');''</Format>
@@ -1774,7 +1790,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Cantidad.Value)</Value>
+                              <Value>=Fields!Cantidad.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1812,7 +1828,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Precio.Value)</Value>
+                              <Value>=Fields!Precio.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1851,7 +1867,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Importe.Value)</Value>
+                              <Value>=(Fields!Cantidad.Value*Fields!Precio.Value)+Sum(Fields!Cantidad1.Value*Fields!Precio1.Value)</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -2308,7 +2324,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Cantidad1.Value*Fields!Precio1.Value)</Value>
+                              <Value>=Fields!Cantidad1.Value*Fields!Precio1.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -2734,7 +2750,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Importe.Value)</Value>
+                              <Value>=Fields!ImporteCab.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00'€';(#,0.00'€');''</Format>
@@ -3003,7 +3019,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!Importe.Value)</Value>
+                              <Value>=Fields!ImporteCab.Value</Value>
                               <Style>
                                 <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>

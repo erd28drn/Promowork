@@ -1664,6 +1664,10 @@ namespace Promowork {
             
             private global::System.Data.DataColumn columnNumeroObra;
             
+            private global::System.Data.DataColumn columnNoAgenda;
+            
+            private global::System.Data.DataColumn columnGastosGenereales;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ListadoObrasDataTable() {
@@ -1803,6 +1807,22 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NoAgendaColumn {
+                get {
+                    return this.columnNoAgenda;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GastosGenerealesColumn {
+                get {
+                    return this.columnGastosGenereales;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1838,7 +1858,7 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListadoObrasRow AddListadoObrasRow(int IdEmpresa, int IdCliente, int NumMatriz, int NumObra, string SerieObra, string DesObra, string DirObra, int IdPoblacion, bool ActivaObra, string poblacion, string DesCliente, string NumeroObra) {
+            public ListadoObrasRow AddListadoObrasRow(int IdEmpresa, int IdCliente, int NumMatriz, int NumObra, string SerieObra, string DesObra, string DirObra, int IdPoblacion, bool ActivaObra, string poblacion, string DesCliente, string NumeroObra, bool NoAgenda, bool GastosGenereales) {
                 ListadoObrasRow rowListadoObrasRow = ((ListadoObrasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1853,7 +1873,9 @@ namespace Promowork {
                         ActivaObra,
                         poblacion,
                         DesCliente,
-                        NumeroObra};
+                        NumeroObra,
+                        NoAgenda,
+                        GastosGenereales};
                 rowListadoObrasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowListadoObrasRow);
                 return rowListadoObrasRow;
@@ -1889,6 +1911,8 @@ namespace Promowork {
                 this.columnpoblacion = base.Columns["poblacion"];
                 this.columnDesCliente = base.Columns["DesCliente"];
                 this.columnNumeroObra = base.Columns["NumeroObra"];
+                this.columnNoAgenda = base.Columns["NoAgenda"];
+                this.columnGastosGenereales = base.Columns["GastosGenereales"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1920,6 +1944,10 @@ namespace Promowork {
                 base.Columns.Add(this.columnDesCliente);
                 this.columnNumeroObra = new global::System.Data.DataColumn("NumeroObra", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumeroObra);
+                this.columnNoAgenda = new global::System.Data.DataColumn("NoAgenda", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoAgenda);
+                this.columnGastosGenereales = new global::System.Data.DataColumn("GastosGenereales", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGastosGenereales);
                 this.columnIdObra.AutoIncrement = true;
                 this.columnIdObra.AutoIncrementSeed = -1;
                 this.columnIdObra.AutoIncrementStep = -1;
@@ -1934,6 +1962,8 @@ namespace Promowork {
                 this.columnDesCliente.MaxLength = 50;
                 this.columnNumeroObra.ReadOnly = true;
                 this.columnNumeroObra.MaxLength = 100;
+                this.columnNoAgenda.ReadOnly = true;
+                this.columnGastosGenereales.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6510,6 +6540,38 @@ namespace Promowork {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool NoAgenda {
+                get {
+                    try {
+                        return ((bool)(this[this.tableListadoObras.NoAgendaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NoAgenda\' de la tabla \'ListadoObras\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListadoObras.NoAgendaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool GastosGenereales {
+                get {
+                    try {
+                        return ((bool)(this[this.tableListadoObras.GastosGenerealesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'GastosGenereales\' de la tabla \'ListadoObras\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListadoObras.GastosGenerealesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdEmpresaNull() {
                 return this.IsNull(this.tableListadoObras.IdEmpresaColumn);
             }
@@ -6626,6 +6688,30 @@ namespace Promowork {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNumeroObraNull() {
                 this[this.tableListadoObras.NumeroObraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNoAgendaNull() {
+                return this.IsNull(this.tableListadoObras.NoAgendaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNoAgendaNull() {
+                this[this.tableListadoObras.NoAgendaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGastosGenerealesNull() {
+                return this.IsNull(this.tableListadoObras.GastosGenerealesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGastosGenerealesNull() {
+                this[this.tableListadoObras.GastosGenerealesColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10371,6 +10457,8 @@ ORDER BY vAgenda.Ano, vAgenda.Trimestre, vAgenda.Mes, vAgenda.Posicion";
             tableMapping.ColumnMappings.Add("poblacion", "poblacion");
             tableMapping.ColumnMappings.Add("DesCliente", "DesCliente");
             tableMapping.ColumnMappings.Add("NumeroObra", "NumeroObra");
+            tableMapping.ColumnMappings.Add("NoAgenda", "NoAgenda");
+            tableMapping.ColumnMappings.Add("GastosGenereales", "GastosGenereales");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10387,13 +10475,13 @@ ORDER BY vAgenda.Ano, vAgenda.Trimestre, vAgenda.Mes, vAgenda.Posicion";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Obras.IdObra, Obras.IdEmpresa, Obras.IdCliente, Obras.NumMatriz, Obras.NumObra, Obras.SerieObra, Obras.DesObra, Obras.DirObra, Obras.IdPoblacion, 
-                         Obras.ActivaObra, Poblaciones.poblacion, Clientes.DesCliente, dbo.NumeroSerieObraSM(Obras.IdObra) AS NumeroObra
+            this._commandCollection[0].CommandText = @"SELECT        Obras.IdObra, Obras.IdEmpresa, Obras.IdCliente, Obras.NumMatriz, Obras.NumObra, Obras.SerieObra, Obras.DesObra, Obras.DirObra, Obras.IdPoblacion, Obras.ActivaObra, Poblaciones.poblacion, Clientes.DesCliente, 
+                         dbo.NumeroSerieObraSM(Obras.IdObra) AS NumeroObra, ISNULL(Obras.NoAgenda, 0) AS NoAgenda, ISNULL(Obras.GastosGenerales, 0) AS GastosGenereales
 FROM            Obras LEFT OUTER JOIN
                          Clientes ON Obras.IdCliente = Clientes.IdCliente LEFT OUTER JOIN
                          Poblaciones ON Obras.IdPoblacion = Poblaciones.IdPoblacion
 WHERE        (Obras.IdEmpresa = @Empresa)
-ORDER BY Obras.SerieObra,  Obras.NumObra";
+ORDER BY Obras.SerieObra, Obras.NumObra";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Empresa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdEmpresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

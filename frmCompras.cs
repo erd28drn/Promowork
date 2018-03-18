@@ -247,6 +247,8 @@ namespace Promowork
             compraNueva["Pagada"] = false;
             compraNueva["FacturaPendiente"] = false;
             compraNueva["FacturaDirecta"] = false;
+            compraNueva["Prevision"] = false;
+            rbVcto.Checked = true;
 
 
            // comprasCabBindingSource.MoveLast();
@@ -334,6 +336,8 @@ namespace Promowork
         {
             DataRowView compraDet = (DataRowView)comprasDetBindingSource.Current;
             compraDet["IdCompra"] = vCompra;
+            gvComprasDet.Focus();
+            gvComprasDet.FocusedColumn = colIdObraCompraDet;
         }
 
         private void tbbtDeleteDet_Click(object sender, EventArgs e)
@@ -653,6 +657,7 @@ namespace Promowork
             opebanco["IdUsuario"] = VariablesGlobales.nIdUsuarioActual;
 
             gvPagos.Focus();
+            gvPagos.FocusedColumn = colImportePagado;
 
             gvPagos.UpdateTotalSummary();
         }

@@ -176,6 +176,14 @@
           <DataField>ImporteCab</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="ImporteCapaFacturar">
+          <DataField>ImporteCapaFacturar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ImporteCabaFacturar">
+          <DataField>ImporteCabaFacturar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>Promowork_dataDataSet</DataSourceName>
@@ -599,7 +607,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ImporteaFacturar.Value)</Value>
+                              <Value>=Fields!ImporteCapaFacturar.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00'€';(#,0.00'€');''</Format>
@@ -1197,7 +1205,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ImporteaFacturar.Value</Value>
+                              <Value>=Fields!aFacturar1.Value*Fields!Precio1.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -1411,7 +1419,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ImporteaFacturar.Value)</Value>
+                              <Value>=Fields!ImporteCabaFacturar.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00'€';(#,0.00'€');''</Format>
@@ -1549,7 +1557,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ImporteaFacturar.Value)</Value>
+                              <Value>=Fields!ImporteCabaFacturar.Value</Value>
                               <Style>
                                 <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>

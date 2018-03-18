@@ -42,11 +42,11 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label fechaPagoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompras));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.vComprasProveedoresGridControl = new DevExpress.XtraGrid.GridControl();
@@ -766,6 +766,8 @@
             this.colImpBase.AppearanceHeader.Options.UseTextOptions = true;
             this.colImpBase.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImpBase.Caption = "Importe Base";
+            this.colImpBase.DisplayFormat.FormatString = "C2";
+            this.colImpBase.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImpBase.FieldName = "ImpBase";
             this.colImpBase.Name = "colImpBase";
             this.colImpBase.OptionsColumn.ReadOnly = true;
@@ -780,6 +782,8 @@
             this.colImpIVA.AppearanceHeader.Options.UseTextOptions = true;
             this.colImpIVA.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImpIVA.Caption = "Importe IVA";
+            this.colImpIVA.DisplayFormat.FormatString = "C2";
+            this.colImpIVA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImpIVA.FieldName = "ImpIVA";
             this.colImpIVA.Name = "colImpIVA";
             this.colImpIVA.OptionsColumn.ReadOnly = true;
@@ -794,6 +798,8 @@
             this.colImpIRPF.AppearanceHeader.Options.UseTextOptions = true;
             this.colImpIRPF.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImpIRPF.Caption = "Importe IRPF";
+            this.colImpIRPF.DisplayFormat.FormatString = "C2";
+            this.colImpIRPF.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImpIRPF.FieldName = "ImpIRPF";
             this.colImpIRPF.Name = "colImpIRPF";
             this.colImpIRPF.OptionsColumn.ReadOnly = true;
@@ -848,6 +854,8 @@
             this.colImpPagado.AppearanceHeader.Options.UseTextOptions = true;
             this.colImpPagado.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImpPagado.Caption = "Importe Pagado";
+            this.colImpPagado.DisplayFormat.FormatString = "C2";
+            this.colImpPagado.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImpPagado.FieldName = "ImpPagado";
             this.colImpPagado.Name = "colImpPagado";
             this.colImpPagado.OptionsColumn.ReadOnly = true;
@@ -862,6 +870,8 @@
             this.colImporte.AppearanceHeader.Options.UseTextOptions = true;
             this.colImporte.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImporte.Caption = "Importe Total";
+            this.colImporte.DisplayFormat.FormatString = "C2";
+            this.colImporte.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImporte.FieldName = "Importe";
             this.colImporte.Name = "colImporte";
             this.colImporte.OptionsColumn.ReadOnly = true;
@@ -1606,9 +1616,9 @@
             this.tbCopiaFactura.Location = new System.Drawing.Point(137, 248);
             this.tbCopiaFactura.Name = "tbCopiaFactura";
             this.tbCopiaFactura.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject6, "Adjuntar copia de la Factura", null, null, true),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::Promowork.Properties.Resources.View_icon, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject7, "Ver copia de factura.", null, null, true),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject8, "Eliminar copia de factura adjunta.", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Adjuntar copia de la Factura", null, null, true),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::Promowork.Properties.Resources.View_icon, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Ver copia de factura.", null, null, true),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Eliminar copia de factura adjunta.", null, null, true)});
             this.tbCopiaFactura.Size = new System.Drawing.Size(370, 22);
             this.tbCopiaFactura.TabIndex = 15;
             this.tbCopiaFactura.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.tbCopiaFactura_ButtonPressed);
@@ -1798,6 +1808,8 @@
             this.colImpIRPFCompraDet.AppearanceHeader.Options.UseTextOptions = true;
             this.colImpIRPFCompraDet.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colImpIRPFCompraDet.Caption = "Imp. IRPF";
+            this.colImpIRPFCompraDet.DisplayFormat.FormatString = "C2";
+            this.colImpIRPFCompraDet.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImpIRPFCompraDet.FieldName = "ImpIRPF";
             this.colImpIRPFCompraDet.Name = "colImpIRPFCompraDet";
             this.colImpIRPFCompraDet.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -2010,7 +2022,7 @@
             // 
             this.QuitarAsociacion.AutoHeight = false;
             this.QuitarAsociacion.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Quitar Asociación", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "Quitar Asociación", null, null, true)});
             this.QuitarAsociacion.Name = "QuitarAsociacion";
             this.QuitarAsociacion.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.QuitarAsociacion.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.QuitarAsociacion_ButtonPressed);
@@ -2370,7 +2382,7 @@
             // 
             this.AsociarAFactura.AutoHeight = false;
             this.AsociarAFactura.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Asociar a Factura", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, "Asociar a Factura", null, null, true)});
             this.AsociarAFactura.Name = "AsociarAFactura";
             this.AsociarAFactura.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.AsociarAFactura.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AsociarAFactura_ButtonPressed);

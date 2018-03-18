@@ -260,6 +260,15 @@
         jOKxRgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btObrasProveedores.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACVSURBVDhPzY6JDYAwDAM7ekfrZgVHGJmSQHiEOMkt5Dko
+        /WW+F5ZSDjNyKPQWlNtC/g1D9JmEQm9YifqnQtwaEtaXe4MOeKBfa7XgubW27uw20chklCG2b+cCBzNR
+        Gd/NYecMCneiHzCPnTPazIY7lIG0EH3Gq5G0UGGNO6HwakYZ2Lxx6CyRDOwqGMrGw68+4O/C3idQjqkv
+        jOKxRgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="proveedoresBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>

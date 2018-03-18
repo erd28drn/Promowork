@@ -19,15 +19,15 @@ namespace Promowork
             switch (err.Number)
             {
                 case 547:
-                    mensaje = "No se pudo Eliminar o Insertar el Registro. Integridad de Datos.";
+                    mensaje = "No se pudo Eliminar o Insertar el Registro. Integridad de Datos. "+ err.Message ;
                     fill = true;
                     break;
                 case 2601:
-                    mensaje = "No se pudo Crear o Modificar el Registro. Valor Duplicado."; break;
+                    mensaje = "No se pudo Crear o Modificar el Registro. Valor Duplicado. "+ err.Message ; break;
                 case 515:
-                    mensaje = "No se pudieron Salvar los Cambios al Registro Actual. Campos Obligatorios Vacios."; break;
+                    mensaje = "No se pudieron Salvar los Cambios al Registro Actual. Campos Obligatorios Vacios. "+ err.Message ; break;
                 default:
-                    mensaje = Convert.ToString(err.Number) + "   " + err.ToString(); break;
+                    mensaje = Convert.ToString(err.Number) + ". " + err.Message; break;
             }
             MessageBox.Show(mensaje, texto, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             return fill;

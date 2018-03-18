@@ -433,7 +433,7 @@ namespace Promowork
         {
             rptParametrosSinAlbaran frm = new rptParametrosSinAlbaran();
             frm.MdiParent = this.MdiParent;
-            frm.WindowState = FormWindowState.Normal;
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
             
         }
@@ -463,6 +463,14 @@ namespace Promowork
             tbRecuentoSeleccion.Text = resultado.Recuento.ToString();
             tbSumaSeleccion.Text = resultado.Suma.ToString("N2");
             tbPromedioSeleccion.Text = resultado.Promedio.ToString("N2");
+        }
+
+        private void btObrasProveedores_Click(object sender, EventArgs e)
+        {
+            rptParametrosObrasProveedores frm = new rptParametrosObrasProveedores();
+            frm.MdiParent = this.MdiParent;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
         }
 
       

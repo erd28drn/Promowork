@@ -201,6 +201,12 @@
     <Compile Include="DescriptionAttribute.cs" />
     <Compile Include="EnumCargaFacturas.cs" />
     <Compile Include="EnumEnhanced.cs" />
+    <Compile Include="rptParametrosObrasProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rptParametrosObrasProveedores.Designer.cs">
+      <DependentUpon>rptParametrosObrasProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgregarPartidasPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1049,6 +1055,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Compras.resx">
       <DependentUpon>Compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptParametrosObrasProveedores.resx">
+      <DependentUpon>rptParametrosObrasProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacturaHorasMatImpParte.rdlc" />
     <EmbeddedResource Include="FacturaHorasMatImp.rdlc" />
